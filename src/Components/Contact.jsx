@@ -64,6 +64,8 @@ const Contact = () => {
               </fieldset>
             </div>
           </form>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31326.15575130541!2d77.693463!3d11.055903!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb21fd7e6668e1f9!2sNalam%20Agro%20Foods!5e0!3m2!1sen!2sin!4v1630991819632!5m2!1sen!2sin" width="100%" height="500px" style={{ border: "0" }} allowfullscreen="true" loading="lazy"></iframe>
+
           
         </div>
         <aside class="col-right sidebar col-sm-3 wow bounceInUp animated animated" style={{visibility: "visible"}}>
@@ -71,11 +73,10 @@ const Contact = () => {
             <div class="block-title">Company</div>
             <div class="block-content">
               <ol id="recently-viewed-items">
-                <li class="item odd"><a href="about-us.html">About Us</a></li>
-                <li class="item even"><a href="#">Sitemap</a></li>
-                <li class="item  odd"><a href="#">Terms of Service</a></li>
-                <li class="item last"><a href="#">Search Terms</a></li>
-                <li class="item last"><a href="contact-us.html"><strong>Contact Us</strong></a></li>
+                <li class="item odd"><a href="/about">About Us</a></li>
+                <li class="item  odd"><a href="/termsandcondition">Terms & Condition</a></li>
+                <li class="item last"><a href="/privacypolicy">privacy policy</a></li>
+                <li class="item last"><a href="/contact"><strong>Contact Us</strong></a></li>
               </ol>
             </div>
           </div>

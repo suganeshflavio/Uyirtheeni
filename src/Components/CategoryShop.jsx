@@ -47,42 +47,44 @@ const CategoryShop = (props) => {
   }
 
   function wishlistme(x) {
-      if (localStorage.tok) {
-          const product_id = x.id
-          if (x.favourites == null) {
-              axios.post(`${process.env.REACT_APP_API}/customer/addWishlist`, {
-                  "product_id": product_id,
-              },
-                  { headers: { "authtoken": `${token}` } })
-                  .then((res) => {
-                      axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Product`, { "cat_id": id }, { headers: { "authtoken": `${token}` } })
-                          .then((res) => {
-                              setProduct([]);
-                              setProduct(res.data.data);
-                              toast.success("Add to Wishlist!", { autoClose: 2000 })
-                          });
-                  });
-          } else {
-              const product_id = x.id
-              console.log(product_id)
-              axios.post(`${process.env.REACT_APP_API}/customer/removeWishlist`, {
-                  "product_id": product_id,
-              },
-                  {
-                      headers: { "authtoken": `${token}` }
-                  }).then((res) => {
-                      axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Product`, { "cat_id": id }, { headers: { "authtoken": `${token}` } }).then((res) => {
-                          setProduct([]);
-                          setProduct(res.data.data);
-                          toast.error("Wishlist Removed!", { autoClose: 2000 })
-                      });
-                  });
-          }
+    if (localStorage.tok) {
+      const product_id = x.id
+      if (x.favourites == null) {
+        axios.post(`${process.env.REACT_APP_API}/customer/addWishlist`, {
+          "product_id": product_id,
+        },
+          { headers: { "authtoken": `${token}` } })
+          .then((res) => {
+            axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } })
+              .then((res) => {
+                setProduct([])
+                setProduct(res.data.data);
+                console.log("addd");
+                toast.success("Added to Wishlist !", { autoClose: 2000 })
+              })
+          })
       } else {
-          // history.push("/Login")
-          window.location.href="/login"
-          toast.success("Please Login", { autoClose: 2000 })
+        const product_id = x.id
+        axios.post(`${process.env.REACT_APP_API}/customer/removeWishlist`, {
+          "product_id": product_id,
+        },
+          {
+            headers: { "authtoken": `${token}` }
+          }).then((res) => {
+            axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } }).then((res) => {
+              setProduct([]);
+              setProduct(res.data.data);
+              console.log("removed");
+              toast.error("Removed from Wishlist!", { autoClose: 2000 })
+            });
+          });
       }
+    }
+    else {
+      // history.push("/Login")
+      window.location.href="login"
+      toast.success("Please Login", { autoClose: 2000 })
+    }
   }
 
   return (

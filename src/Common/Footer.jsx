@@ -34,7 +34,7 @@ const Footer = () => {
               <div class="footer-column">
                 <h4>Shopping Guide</h4>
                 <ul class="links">
-                  <li><a href="blog.html" title="How to buy">Blog</a></li>
+                  {/* <li><a href="blog.html" title="How to buy">Blog</a></li> */}
                   <li><a href="faq.html" title="FAQs">FAQs</a></li>
                   <li><a href="#" title="Payment">Payment</a></li>
                   <li><a href="#" title="Shipment">Shipment</a></li>
@@ -47,7 +47,7 @@ const Footer = () => {
               <div class="footer-column">
                 <h4>Style Advisor</h4>
                 <ul class="links">
-                  <li><a href="login.html" title="Your Account">Your Account</a></li>
+                  <li><a href="/dashboard" title="Your Account">Your Account</a></li>
                   <li><a href="#" title="Information">Information</a></li>
                   <li><a href="#" title="Addresses">Addresses</a></li>
                   <li><a href="#" title="Addresses">Discount</a></li>
@@ -60,12 +60,10 @@ const Footer = () => {
               <div class="footer-column">
                 <h4>Information</h4>
                 <ul class="links">
-                  <li><a href="sitemap.html" title="Site Map">Site Map</a></li>
-                  <li><a href="#" title="Search Terms">Search Terms</a></li>
-                  <li><a href="#" title="Advanced Search">Advanced Search</a></li>
-                  <li><a href="about_us.html" title="About Us">About Us</a></li>
-                  <li><a href="contact_us.html" title="Contact Us">Contact Us</a></li>
-                  <li><a href="#" title="Suppliers">Suppliers</a></li>
+                  <li><a href="/termsandcondition" title="termsandcondition">Terma&Conditions</a></li>
+                  <li><a href="/privacypolicy" title="privacypolicy">Privacy Policy</a></li>
+                  <li><a href="/about" title="About Us">About Us</a></li>
+                  <li><a href="/contact" title="Contact Us">Contact Us</a></li>
                 </ul>
               </div>
             </div>
@@ -74,11 +72,12 @@ const Footer = () => {
                 <h4>Contact Us</h4>
                 <div class="contacts-info">
                   <address>
-                  <i class="add-icon"></i>ThemesGround, 789 Main rd,<br/>
-                  Anytown, CA 12345 USA<br/>
+                  <i class="add-icon"></i>Nalam Agro Foods,
+                    Ichikattuvalasu, Nathakadaiyur,
+                    Kangayam, Tirupur - 638108.
                   </address>
-                  <div class="phone-footer"><i class="phone-icon"></i>+ 888 456-7890</div>
-                  <div class="email-footer"><i class="email-icon"></i><a href="mailto:abc@example.com">Uyirtheeni@themesground.com</a></div>
+                  <div class="phone-footer"><i class="phone-icon"></i><a href="tel:+919095959587">+91 9095959587</a></div>
+                  <div class="email-footer"><i class="email-icon"></i><a href="mailto:info@uyirtheeni.com">info@uyirtheeni.com</a></div>  
                 </div>
               </div>
             </div>

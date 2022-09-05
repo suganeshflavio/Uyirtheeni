@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <div>
         <header>
-    <div class="container">
+    {/* <div class="container">
       <div class="row">
         <div class="container">
       <div class="row">
@@ -40,7 +40,7 @@ const Header = () => {
       </div>
     </div>
       </div>
-    </div>
+    </div> */}
     <div id="header">
       <div class="container">
         <div class="header-container row">
@@ -195,8 +195,8 @@ const Header = () => {
                       </div>
                      </div> */}
                   </li>
-                  <li class="mega-menu"> <a class="level-top" href="/blog"><span>Blog</span></a>
-                    {/* <div class="level0-wrapper dropdown-6col">
+                  {/* <li class="mega-menu"> <a class="level-top" href="/blog"><span>Blog</span></a>
+                    <div class="level0-wrapper dropdown-6col">
                       <div class="container">
                         <div class="level0-wrapper2">
                           <div class="nav-block nav-block-center"> 
@@ -253,8 +253,8 @@ const Header = () => {
                           </div>
                         </div>
                       </div>
-                    </div> */}
-                  </li>
+                    </div>
+                  </li> */}
                   <li class="mega-menu"> <a class="level-top" href="/about"><span>About</span></a> </li>
                   <li class="mega-menu"> <a class="level-top" href="/contact"><span>Contact</span></a> </li>
                   {/* <li class="level0 parent drop-menu"><a href="#"><span>Pages</span> </a> 

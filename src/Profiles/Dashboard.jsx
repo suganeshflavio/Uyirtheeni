@@ -80,8 +80,8 @@ useEffect(() => {
             {/* <!-- BEGIN DASHBOARD--> */}
             <div class="dashboard">
               <div class="welcome-msg">
-                <p class="hello"><strong>Hello, {profilelist?.customername}!</strong></p>
-                <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+                <p class="hello"><strong>Hello, <span style={{textTransform:"capitalize"}}>{profilelist?.customername}!</span></strong></p>
+                {/* <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p> */}
               </div>
                {/* account information */}
 
@@ -111,12 +111,12 @@ useEffect(() => {
                     </thead>
                     <tbody>
                       <tr class="first odd">
-                        <td>{profilelist?.customername}</td>
+                        <td style={{textTransform:"capitalize"}}>{profilelist?.customername}</td>
                         {/* <td><span class="nobr">{profilelist?.alaisname}</span></td> */}
-                        <td>{profilelist?.email}</td>
-                        <td><span class="price">{profilelist?.phone}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{profilelist?.email}</td>
+                        <td><span class="price" style={{textTransform:"capitalize"}}>{profilelist?.phone}</span></td>
                         {/* <td>{profilelist?.dob}</td> */}
-                        <td class="a-center last"><span class="nobr"> {profilelist?.gender}</span></td>
+                        <td class="a-center last"><span class="nobr" style={{textTransform:"capitalize"}}> {profilelist?.gender}</span></td>
                       </tr>
                     
                     </tbody>
@@ -153,14 +153,14 @@ useEffect(() => {
                     <tbody>
                       {orders[0]?.orders?.filter(data => data.order_status !== "DELIVERED")?.map((x, i) => (
                       <tr class="first odd">
-                        <td>{++i}</td>
-                        <td style={{cursor:"pointer"}}><span class="nobr"
+                        <td style={{textTransform:"capitalize"}}>{++i}</td>
+                        <td style={{cursor:"pointer",textTransform:"capitalize"}}><span class="nobr"
                         //  onClick={() => Updateorder(x.id)}
                         >{x?.order_id}</span></td>
                         <td>Rs.{x?.total_payment / 100}/-</td>
-                        <td><span class="price">{x?.order_status}</span></td>
-                        <td>{x?.payment_status}</td>
-                        <td>{orders[0]?.landmark},{orders[0]?.street},{orders[0]?.city},{orders[0]?.state}, {orders[0]?.zipcode}</td>
+                        <td><span class="price" style={{textTransform:"capitalize"}}>{x?.order_status}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{x?.payment_status}</td>
+                        <td style={{textTransform:"capitalize"}}>{orders[0]?.landmark},{orders[0]?.street},{orders[0]?.city},{orders[0]?.state}, {orders[0]?.zipcode}</td>
                         {/* <td class="a-center last"><span class="nobr"> <a onClick={() => Updateorder(x?.id)}>View Order</a> </span></td> */}
                         {/* <td>  <span onClick={() => Updateorder(x.id)}><span className="badge badge-pills badge-success" style={{fontSize: "15px",padding: "10px",cursor:"pointer"}}>view orders</span></span></td> */}
                       </tr>
@@ -199,11 +199,11 @@ useEffect(() => {
                       {address !== null ? address?.map((x, val) => (
                       <tr class="first odd">
                         <td>{++val}</td>
-                        <td><span class="nobr">{x?.state}</span></td>
-                        <td>{x?.city}</td>
-                        <td><span class="price">{x?.street}</span></td>
-                        <td>{x?.landmark}</td>
-                        <td class="a-center last"><span class="nobr">{x?.zipcode} </span></td>
+                        <td><span class="nobr" style={{textTransform:"capitalize"}}>{x?.state}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{x?.city}</td>
+                        <td style={{textTransform:"capitalize"}}><span class="price">{x?.street}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{x?.landmark}</td>
+                        <td class="a-center last"><span class="nobr" style={{textTransform:"capitalize"}}>{x?.zipcode} </span></td>
                         <td>   <span className="badge badge-warning" type="submit" style={{ cursor: "pointer", color: "black",fontSize: "15px", padding: "10px" }} onClick={() => Update(x.id)}><i class='bx bxs-edit-alt' ></i> Update</span> </td>
 
                       </tr>
