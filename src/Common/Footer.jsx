@@ -33,7 +33,7 @@ const Footer = () => {
       <div class="footer-middle">
         <div class="container">
           <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
               <div class="footer-column">
                 <h4>Shopping Guide</h4>
                 <ul class="links">
@@ -46,7 +46,7 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            {/* <div class="col-md-3 col-sm-6">
               <div class="footer-column">
                 <h4>Style Advisor</h4>
                 <ul class="links">
@@ -58,8 +58,8 @@ const Footer = () => {
                   <li><a href="#" title="Order Tracking">Order Tracking</a></li>
                 </ul>
               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
+            </div> */}
+            <div class="col-md-4 col-sm-6">
               <div class="footer-column">
                 <h4>Information</h4>
                 <ul class="links">
@@ -70,7 +70,7 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
               <div class="footer-column">
                 <h4>Contact Us</h4>
                 <div class="contacts-info">
@@ -99,13 +99,13 @@ const Footer = () => {
           <div class="col-xs-12 col-sm-4">
             <div class="social">
               <ul>
-                <li class="fb"><a href="#"></a></li>
-                <li class="tw"><a href="#"></a></li>
-                <li class="googleplus"><a href="#"></a></li>
-                <li class="rss"><a href="#"></a></li>
-                <li class="pintrest"><a href="#"></a></li>
-                <li class="linkedin"><a href="#"></a></li>
-                <li class="youtube"><a href="#"></a></li>
+                <li class="fb"><a href="https://www.facebook.com/%E0%AEZ%AA%E0%AE%BE%E0%AE%B0%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%B0%E0%AE%BF%E0%AE%AF-%E0%AE%89%E0%AE%A3%E0%AE%B5%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%8D-%E0%AE%95%E0%AF%8B%E0%AE%AE%E0%AE%BE%E0%AE%A4%E0%AE%BE-%E0%AE%A4%E0%AE%AF%E0%AE%BE%E0%AE%B0%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%8D-112456296039547/about/?ref=page_internal"></a></li>
+                {/* <li class="tw"><a href="#"></a></li> */}
+                <li class="googleplus"><a href="mailto:online@uyirtheeni.com"></a></li>
+                {/* <li class="rss"><a href="#"></a></li> */}
+                {/* <li class="instagram"><a href="https://www.instagram.com/uyirtheeni_traditionalsweets/"></a></li> */}
+                <li class="linkedin"><a href="https://www.instagram.com/uyirtheeni_traditionalsweets/"></a></li>
+                <li class="youtube"><a href="ttps://www.youtube.com/channel/UCQA218L-9_7no8OdlfDISVA"></a></li>
               </ul>
             </div>
           </div>

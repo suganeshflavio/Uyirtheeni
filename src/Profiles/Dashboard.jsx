@@ -177,8 +177,8 @@ useEffect(() => {
                         <td><span class="price" style={{textTransform:"capitalize"}}>{x?.order_status}</span></td>
                         <td style={{textTransform:"capitalize"}}>{x?.payment_status}</td>
                         <td style={{textTransform:"capitalize"}}>{orders[0]?.landmark},{orders[0]?.street},{orders[0]?.city},{orders[0]?.state}, {orders[0]?.zipcode}</td>
-                        <td class="a-center last"><span class="nobr"> <a onClick={() => Updateorder(x?.id)}>View Order</a> </span></td>
-                        {/* <td>  <span onClick={() => Updateorder(x.id)}><span className="badge badge-pills badge-success" style={{fontSize: "15px",padding: "10px",cursor:"pointer"}}>view orders</span></span></td> */}
+                        {/* <td class="a-center last"><span class="nobr"> <a onClick={() => Updateorder(x?.id)}>View Order</a> </span></td> */}
+                        <td>  <span onClick={() => Updateorder(x.id)}><span className="badge badge-pills badge-success" style={{fontSize: "15px",padding: "10px",cursor:"pointer"}}>view orders</span></span></td>
                       </tr>
                       ))}
                     </tbody>
@@ -220,7 +220,7 @@ useEffect(() => {
                         <td style={{textTransform:"capitalize"}}><span class="price">{x?.street}</span></td>
                         <td style={{textTransform:"capitalize"}}>{x?.landmark}</td>
                         <td class="a-center last"><span class="nobr" style={{textTransform:"capitalize"}}>{x?.zipcode} </span></td>
-                        <td>   <span className="badge badge-warning" type="submit" style={{ cursor: "pointer", color: "black",fontSize: "15px", padding: "10px" }} onClick={() => Update(x.id)}><i class='bx bxs-edit-alt' ></i> Update</span> </td>
+                        <td>   <span className="badge badge-warning" type="submit" style={{ cursor: "pointer", color: "white",fontSize: "15px", padding: "10px" }} onClick={() => Update(x.id)}><i class='bx bxs-edit-alt' ></i> Update</span> </td>
 
                       </tr>
                         )) : false}
