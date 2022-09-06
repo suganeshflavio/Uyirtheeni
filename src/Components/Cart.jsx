@@ -1,49 +1,77 @@
-import React,{useState,  useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {apiCalls} from "../Axios/Services";
+import { apiCalls } from "../Axios/Services";
 
 const token = (localStorage.getItem('tok'));
 const Cart = () => {
     const history = useNavigate();
     const [address, setAddress] = useState([])
     const [profilelist, setProfilelist] = useState([])
+    const [load, setLoad] = useState(true);
     const [id, setId] = useState(1)
     const [cartlist, setCartlist] = useState([])
     const [state, setState] = useState({
-      subtotal: 0,
-      total: 0,
-      gst: 0
+        subtotal: 0,
+        total: 0,
+        gst: 0
     })
+
+    function Update() {
+        console.log("dtaa")
+        window.location.href = `/checkout`
+        // props.history.push("/Product?id=" + id)
+    }
+    function Updatee() {
+        console.log("dtaa")
+        window.location.href = `/checkout`
+        // props.history.push("/Product?id=" + id)
+    }
 
     function delcart(x) {
         axios.post(`${process.env.REACT_APP_API}/customer/removeCart`, { cart_id: x.id, product_id: x.product_id }, { headers: { "authtoken": `${token}` } })
-          .then((res) => {
-            axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
-              .then((res) => {
-                setCartlist(res.data.data);
-                window.location.reload()
-                toast.error("Removed from Cart!", { autoClose: 2000 })
-              })
-          })
-      }
+            .then((res) => {
+                setLoad(false)
+                axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
+                    .then((res) => {
+                        setLoad(false)
+                        setCartlist(res.data.data);
+                        window.location.reload()
+                        toast.error("Removed from Cart!", { autoClose: 2000 })
+                    })
+            })
+    }
 
     useEffect(() => {
         // checkout()
         axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, {
             headers: { "authtoken": `${token}` }
-          }).then((res) => {
-          setCartlist(res.data.data)
+        }).then((res) => {
+            setLoad(false)
+            setCartlist(res.data.data)
         }).catch((error) => {
-          if (localStorage.tok == null || localStorage.tok == undefined) {
-            history.push("/login")
-          }
+            if (localStorage.tok == null || localStorage.tok == undefined) {
+                history.push("/login")
+            }
         })
-      }, [])
+    }, [])
 
-    return (
+    return load ? (
+        <div
+          style={{
+            height: "400px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : (
         <div>
             <div class="page-heading">
                 <div class="container">
@@ -93,52 +121,52 @@ const Cart = () => {
                                         <tfoot>
                                             <tr class="first last">
                                                 <td colspan="50" class="a-right last">
-                                                    <button type="button" title="Continue Shopping" class="button btn-continue" onClick=""><span>Continue Shopping</span></button>
-                                                    <button type="submit" name="update_cart_action" value="empty_cart" class="button " id="empty_cart_button"><span><span>Proceed to Checkout</span></span></button>
+                                                    <button type="button" title="Checkout" class="button btn-continue" onClick={Update}><span>Proceed to Checkout</span></button>
+                                                    {/* <a href='/shop'><button type="submit" value="empty_cart" class="button "><span>Continue Shopping </span></button></a> */}
                                                     {/* <button type="submit" name="update_cart_action" value="update_qty" title="Update Cart" class="button btn-update"><span><span>Update Cart</span></span></button> */}
 
                                                 </td>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                        {cartlist.map((x, val) => (
-                                            <tr class="first last odd">
-                                                <td>{++val}</td>
-                                                <td class="image hidden-table"><a href="product-detail.html" class="product-image">
-                                                    <img src={x.product.product_image} width="75" alt={x.product.product_name} /></a></td>
-                                                <td>
-                                                    <h2 class="product-name">
-                                                        <a href="product-detail.html" style={{textTransform:"capitalize"}}>{x.product.product_name}</a>
-                                                    </h2>
-                                                </td>
-                                                <td class="a-center hidden-table">
-                                                    <a href="#" class="edit" >{x.product.category_name}</a>
-                                                </td>
+                                            {cartlist.map((x, val) => (
+                                                <tr class="first last odd">
+                                                    <td>{++val}.</td>
+                                                    <td class="image hidden-table"><a class="product-image">
+                                                        <img src={x.product.product_image} width="75" alt={x.product.product_name} /></a></td>
+                                                    <td>
+                                                        <h2 class="product-name">
+                                                            <a style={{ textTransform: "capitalize" }}>{x.product.product_name}</a>
+                                                        </h2>
+                                                    </td>
+                                                    <td class="a-center hidden-table">
+                                                        <a href="#" class="edit" style={{ textTransform: "capitalize" }}>{x.product.category_name}</a>
+                                                    </td>
 
 
-                                                <td class="a-right hidden-table">
-                                                    <span class="cart-price">
-                                                        <span class="price">₹{x.single_product_price}</span>
-                                                    </span>
+                                                    <td class="a-right hidden-table">
+                                                        <span class="cart-price">
+                                                            <span class="price" style={{ textAlign: "center" }}>₹{x.single_product_price}</span>
+                                                        </span>
 
 
-                                                </td>
-                                                <td class="a-center movewishlist">
-                                                {x.no_of_products}                                                </td>
-                                                <td>₹{x.total_price}</td>
-                                                <td class="a-center last">
+                                                    </td>
+                                                    <td class="a-center movewishlist" style={{ textAlign: "center" }}>
+                                                        {x.no_of_products}                                                </td>
+                                                    <td style={{ textAlign: "center" }}>₹{x.total_price}</td>
+                                                    <td class="a-center last">
 
-                                                    <a onClick={() => delcart(x)} title="Remove item" class="button remove-item">
-                                                        <span><span>Remove item</span></span></a>
-                                                        </td>
-
-
+                                                        <a onClick={() => delcart(x)} title="Remove item" class="button remove-item">
+                                                            <span><span>Remove item</span></span></a>
+                                                    </td>
 
 
 
-                                            </tr>
+
+
+                                                </tr>
                                             ))}
-                        </tbody>
+                                        </tbody>
                                     </table>
 
                                 </fieldset>
@@ -258,14 +286,14 @@ const Cart = () => {
                                     <li>
                                         <div class="feature-box">
                                             <div class="icon-truck"></div>
-                                            <div class="content">FREE SHIPPING on order over $99</div>
+                                            <div class="content">FREE SHIPPING on order over ₹99</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="feature-box">
                                             <div class="icon-support"></div>
                                             <div class="content">Have a question?<br />
-                                                +1 800 789 0000</div>
+                                                <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
                                         </div>
                                     </li>
                                     <li>

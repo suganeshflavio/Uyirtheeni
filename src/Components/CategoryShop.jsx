@@ -12,6 +12,7 @@ const token = (localStorage.getItem('tok'));
 const CategoryShop = (props) => {
   const history = useNavigate()
   const [add, setAdd] = useState(true)
+  const [load, setLoad] = useState(true);
   function useQuery() {
       return new URLSearchParams(useLocation().search);
   }
@@ -19,6 +20,7 @@ const CategoryShop = (props) => {
   const [product, setProduct] = useState([])
   useEffect(() => {
     apiCalls("post", "/customer/getall_Category_Products", { "cat_id": id }).then((res)=>{
+      setLoad(false)
       console.log(res.data);
                   setProduct(res.data.data);
     })
@@ -57,6 +59,7 @@ const CategoryShop = (props) => {
           .then((res) => {
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } })
               .then((res) => {
+                setLoad(false)
                 setProduct([])
                 setProduct(res.data.data);
                 console.log("addd");
@@ -71,6 +74,7 @@ const CategoryShop = (props) => {
           {
             headers: { "authtoken": `${token}` }
           }).then((res) => {
+            setLoad(false)
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } }).then((res) => {
               setProduct([]);
               setProduct(res.data.data);
@@ -87,7 +91,20 @@ const CategoryShop = (props) => {
     }
   }
 
-  return (
+  return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
       <div class="page-heading">
         <div class="breadcrumbs">
@@ -143,7 +160,7 @@ const CategoryShop = (props) => {
                                     <span style={{ fontSize: "30px", color: "green", }}>{x.favourites == null ? <AiOutlineHeart/> : <AiOutlineHeart/>}</span>
                                   </div>
                               </div>
-                              <div class="item-title"><a href="product-detail.html" style={{textTransform:"capitalize",fontSize:"18px"}}>( {x?.category_name} )</a> </div>
+                              <div class="item-title"><a style={{textTransform:"capitalize",fontSize:"18px"}}>( {x?.category_name} )</a> </div>
                       
                             </div>
                           </div>

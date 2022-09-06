@@ -8,10 +8,12 @@ const token = (localStorage.getItem('tok'));
 
 const Wishlist = () => {
   const history = useNavigate()
+  const [load, setLoad] = useState(true);
   const [wishlist, setWishlist] = useState([])
   useEffect(() => {
       axios.post(`${process.env.REACT_APP_API}/customer/getWishlist`, {}, { headers: { "authtoken": `${token}` } })
           .then((res) => {
+            setLoad(false)
               setWishlist(res.data.data)
           }).catch((error) => {
               if (localStorage.tok == null || localStorage.tok == undefined) {
@@ -24,6 +26,7 @@ const Wishlist = () => {
   function delwishlist(id) {
       axios.post(`${process.env.REACT_APP_API}/customer/removeWishlist`, { product_id: id }, { headers: { "authtoken": `${token}` } })
           .then((res) => {
+            setLoad(false)
               axios.post(`${process.env.REACT_APP_API}/customer/getWishlist`, {}, { headers: { "authtoken": `${token}` } })
                   .then((res) => {
                       setWishlist(res.data.data);
@@ -33,7 +36,20 @@ const Wishlist = () => {
           })
   }
 
-  return (
+  return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
           <div class="page-heading">
     <div class="container">
@@ -75,14 +91,14 @@ const Wishlist = () => {
 
                       <tr id="item_32" class="first odd">
                         <td>{++i}</td>
-                        <td class="wishlist-cell0 customer-wishlist-item-image"><a class="product-image" href="product-detail.html" title="Slim Fit Casual Shirt"> <img src={c.product.product_image} width="80" height="80" alt={c.product.product_name}/> </a></td>
-                        <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a href="product-detail.html" title="Slim Fit Casual Shirt">{c.product.product_name}</a></h3>
+                        <td class="wishlist-cell0 customer-wishlist-item-image"><a class="product-image" title="Slim Fit Casual Shirt"> <img src={c.product.product_image} width="80" height="80" alt={c.product.product_name}/> </a></td>
+                        <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c.product.product_name}</a></h3>
                           {/* <div class="description std">
                             <div class="inner">Full sleeve with buttoned cuffs, brand embroidery at the left side of the chest. Blue colour self design casual shirt, made with 100% cotton, slim fit, mandarin collar with a full buttoned chest placket, single chest patch pocket, full sleeve with buttoned cuffs, brand embroidery at the left side of the chest.</div>
                           </div>
                           <textarea style={{height: "120px", width: "96%"}} name="description[32]" rows="3" cols="5" onFocus="focusComment(this)" onBlur="focusComment(this)" title="Comment"></textarea> */}
                           </td>
-                          <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a href="product-detail.html" title="Slim Fit Casual Shirt">{c.product.category_name}</a></h3>
+                          <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c.product.category_name}</a></h3>
                           {/* <div class="description std">
                             <div class="inner">Full sleeve with buttoned cuffs, brand embroidery at the left side of the chest. Blue colour self design casual shirt, made with 100% cotton, slim fit, mandarin collar with a full buttoned chest placket, single chest patch pocket, full sleeve with buttoned cuffs, brand embroidery at the left side of the chest.</div>
                           </div>
@@ -121,14 +137,14 @@ const Wishlist = () => {
         <li>
           <div class="feature-box">
             <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over $99</div>
+            <div class="content">FREE SHIPPING on order over ₹99</div>
           </div>
         </li>
         <li>
           <div class="feature-box">
             <div class="icon-support"></div>
             <div class="content">Have a question?<br/>
-              +1 800 789 0000</div>
+            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
           </div>
         </li>
         <li>

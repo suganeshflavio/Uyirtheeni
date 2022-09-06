@@ -15,12 +15,14 @@ const Home = (props) => {
   const [getCategory, setGetCategory] = useState([])
   const [recProducts, setRecProducts] = useState([])
   const [error, setError] = useState([])
+  const [load, setLoad] = useState(true);
   const [banner, setBanner] = useState([])
 
     // GET BANNERS API CALL
     useEffect(() => {
       axios.get(`${process.env.REACT_APP_API}/customer/getBanners`, { headers: { "authtoken": ` ${token}` } }).
         then((res) => {
+          setLoad(false)
           setBanner(res.data.data)
         }).catch((e) => {
           props.history.push("/Apifails")
@@ -31,6 +33,7 @@ const Home = (props) => {
  useEffect(() => {
   axios.get(`https://api.uyirtheeni.com/customer/getCategory`).
     then((res) => {
+      setLoad(false)
       setGetCategory(res.data.data)
       console.log(res.data.data)
       // console.log(res.data.data);
@@ -52,12 +55,26 @@ function Updatee(id) {
 useEffect(() => {
   axios.post(`https://api.uyirtheeni.com/customer/recommendedProduct`, { "recommended": true })
     .then((res) => {
+      setLoad(false)
       setRecProducts(res.data.data);
     });
 }, [])
 
 
-   return (
+   return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
   <div class="content">
     {/* <div id="thmg-slider-slideshow" class="thmg-slider-slideshow">
@@ -510,14 +527,14 @@ useEffect(() => {
         <li>
           <div class="feature-box">
             <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over $99</div>
+            <div class="content">FREE SHIPPING on order over ₹99</div>
           </div>
         </li>
         <li>
           <div class="feature-box">
             <div class="icon-support"></div>
             <div class="content">Have a question?<br/>
-              +1 800 789 0000</div>
+            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
           </div>
         </li>
         <li>

@@ -14,13 +14,14 @@ const Dashboard = (props) => {
       window.location.href = "/Login"
   }
   const [address, setAddress] = useState([])
+  const [load, setLoad] = useState(true);
   const [orders, setOrders] = useState([])
   const [profilelist, setProfilelist] = useState([])
 
   useEffect(() => {
     axios.post(`https://api.uyirtheeni.com/customer/fetch`, {}, { headers: { "authtoken": `${token}` } })
         .then((res) => {
-
+          setLoad(false)
             setProfilelist(res?.data?.data);
         }).catch((error) => {
             if (localStorage.tok == null || localStorage.tok == undefined) {
@@ -32,6 +33,7 @@ useEffect(() => {
     axios.post(`https://api.uyirtheeni.com/customer/getOrders`, {},
         { headers: { "authtoken": `${token}` } })
         .then((res) => {
+          setLoad(false)
             console.log(res.data.data);
             setOrders(res?.data?.data);
         });
@@ -49,11 +51,25 @@ useEffect(() => {
     axios.post(`https://api.uyirtheeni.com/customer/getAddress`, {},
         { headers: { "authtoken": `${token}` } })
         .then((res) => {
+          setLoad(false)
             setAddress(res?.data?.data);
         });
 }, []);
 
-  return (
+  return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
         <div class="page-heading">
     <div class="container">
@@ -147,7 +163,7 @@ useEffect(() => {
                         <th><span class="nobr">Order Status</span></th>
                         <th>Payment Status</th>
                         <th>Address</th>
-                        {/* <th>Action</th> */}
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -161,7 +177,7 @@ useEffect(() => {
                         <td><span class="price" style={{textTransform:"capitalize"}}>{x?.order_status}</span></td>
                         <td style={{textTransform:"capitalize"}}>{x?.payment_status}</td>
                         <td style={{textTransform:"capitalize"}}>{orders[0]?.landmark},{orders[0]?.street},{orders[0]?.city},{orders[0]?.state}, {orders[0]?.zipcode}</td>
-                        {/* <td class="a-center last"><span class="nobr"> <a onClick={() => Updateorder(x?.id)}>View Order</a> </span></td> */}
+                        <td class="a-center last"><span class="nobr"> <a onClick={() => Updateorder(x?.id)}>View Order</a> </span></td>
                         {/* <td>  <span onClick={() => Updateorder(x.id)}><span className="badge badge-pills badge-success" style={{fontSize: "15px",padding: "10px",cursor:"pointer"}}>view orders</span></span></td> */}
                       </tr>
                       ))}
@@ -250,14 +266,14 @@ useEffect(() => {
         <li>
           <div class="feature-box">
             <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over $99</div>
+            <div class="content">FREE SHIPPING on order over ₹99</div>
           </div>
         </li>
         <li>
           <div class="feature-box">
             <div class="icon-support"></div>
             <div class="content">Have a question?<br/>
-              +1 800 789 0000</div>
+            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
           </div>
         </li>
         <li>

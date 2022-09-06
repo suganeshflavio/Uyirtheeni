@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Footer = () => {
+  const d = new Date();
+  const year= d.getFullYear();
+
   return (
     <div>
          <footer> 
@@ -35,11 +38,11 @@ const Footer = () => {
                 <h4>Shopping Guide</h4>
                 <ul class="links">
                   {/* <li><a href="blog.html" title="How to buy">Blog</a></li> */}
-                  <li><a href="faq.html" title="FAQs">FAQs</a></li>
-                  <li><a href="#" title="Payment">Payment</a></li>
-                  <li><a href="#" title="Shipment">Shipment</a></li>
-                  <li><a href="#" title="Where is my order?">Where is my order?</a></li>
-                  <li><a href="#" title="Return policy">Return policy</a></li>
+                  <li><a href="/shop" title="FAQs">Shop</a></li>
+                  <li><a href="/category" title="Payment">Category</a></li>
+                  <li><a href="/dashboard" title="Shipment">My Accounts</a></li>
+                  <li><a href="/cart" title="Where is my order?">Cart</a></li>
+                  <li><a href="/wishlist" title="Return policy">Wishlist</a></li>
                 </ul>
               </div>
             </div>
@@ -49,7 +52,7 @@ const Footer = () => {
                 <ul class="links">
                   <li><a href="/dashboard" title="Your Account">Your Account</a></li>
                   <li><a href="#" title="Information">Information</a></li>
-                  <li><a href="#" title="Addresses">Addresses</a></li>
+                  <li><a href="/dashboard" title="Addresses">Addresses</a></li>
                   <li><a href="#" title="Addresses">Discount</a></li>
                   <li><a href="#" title="Orders History">Orders History</a></li>
                   <li><a href="#" title="Order Tracking">Order Tracking</a></li>
@@ -76,7 +79,7 @@ const Footer = () => {
                     Ichikattuvalasu, Nathakadaiyur,
                     Kangayam, Tirupur - 638108.
                   </address>
-                  <div class="phone-footer"><i class="phone-icon"></i><a href="tel:+919095959587">+91 9095959587</a></div>
+                  <div class="phone-footer"><i class="phone-icon"></i><a href="tel:+91 90959-59587">+91 90959 59587</a></div>
                   <div class="email-footer"><i class="email-icon"></i><a href="mailto:info@uyirtheeni.com">info@uyirtheeni.com</a></div>  
                 </div>
               </div>
@@ -106,7 +109,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div class="col-sm-4 col-xs-12 coppyright"> © 2018 ThemesGround. All Rights Reserved. </div>
+          <div class="col-sm-4 col-xs-12 coppyright"> Copyright © <b><a href='/' style={{color:"#80b435"}}>UyirTheeni</a></b> {year} | All Rights Reserved <br /> Developed by <b><a href='https://nutz.in/' style={{color:"#80b435"}}>Nutz</a></b> </div>
           <div class="col-xs-12 col-sm-4">
             <div class="payment-accept"> <img src="images/payment-1.png" alt=""/> <img src="images/payment-2.png" alt=""/> <img src="images/payment-3.png" alt=""/> <img src="images/payment-4.png" alt=""/> </div>
           </div>

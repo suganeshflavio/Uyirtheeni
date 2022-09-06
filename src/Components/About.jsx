@@ -23,12 +23,20 @@ const About = () => {
                         <div class="std">
                             <div class="wrapper_bl" style={{marginTop: "1px"}}>
                                 <div class="form_background">
-
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                <div class="ad-info">
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Organic & Food for 25 Years a hobbiest for 30.</h3>
+                                    </div>
+                                    <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>Organic products are grown under a system of agriculture without the use of chemical fertilizers and pesticides with an environmentally and socially responsible approach. Organic foods promote healthier and more sustainable use of natural resources. Modern conventional farming methods include excessive use of chemicals and planting only one crop multiple times.</p>
                                     <br />
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                    <div class="ad-info">
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Hobby, a Talent, and now, a Profession.</h3>
+                                    </div>
+                                    <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>Organic farms are only certified after they have been operating according to organic principles for three years. However, the use of the word ‘organic’ is not regulated in Australia, so it is important to make sure that products you buy come from certified growers and producers.</p>
                                     <br />
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                    <div class="ad-info">
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>Organic food is here Grab It.</h3>
+                                    </div>
+                                    <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>These standards provide an agreed set of procedures to be followed in organic food production. This helps to ensure the integrity and traceability of an organic food product from ‘paddock to plate’. The standards include requirements for production, preparation, transportation, marketing and labelling of organic products in Australia.</p>
                                 </div>
                             </div></div>
                     </div>
@@ -43,14 +51,14 @@ const About = () => {
         <li>
           <div class="feature-box">
             <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over $99</div>
+            <div class="content">FREE SHIPPING on order over ₹99</div>
           </div>
         </li>
         <li>
           <div class="feature-box">
             <div class="icon-support"></div>
             <div class="content">Have a question?<br/>
-              +1 800 789 0000</div>
+            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
           </div>
         </li>
         <li>

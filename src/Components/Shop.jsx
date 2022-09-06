@@ -9,11 +9,13 @@ import { AiOutlineHeart } from 'react-icons/ai';
 const token = (localStorage.getItem('tok'));
 const Shop = (props) => {
   const [product, setProduct] = useState([])
+  const [load, setLoad] = useState(true);
   const history = useNavigate()
   useEffect(() => {
     if (localStorage.tok) {
       axios.post(`https://api.uyirtheeni.com/customer/getallProduct`, {},
         { headers: { "authtoken": `${token}` } }).then((res) => {
+          setLoad(false)
           if (res.data.data.length !== 0)
             setProduct(res.data.data)
           else {
@@ -23,6 +25,7 @@ const Shop = (props) => {
     }
     else {
       axios.get(`https://api.uyirtheeni.com/customer/getallProducts`).then((res) => {
+        setLoad(false)
         console.log(res.data.data.length)
         if (res.data.data.length !== 0)
           setProduct(res.data.data)
@@ -51,6 +54,7 @@ const Shop = (props) => {
           .then((res) => {
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } })
               .then((res) => {
+                setLoad(false)
                 setProduct([])
                 setProduct(res.data.data);
                 console.log("addd");
@@ -65,6 +69,7 @@ const Shop = (props) => {
           {
             headers: { "authtoken": `${token}` }
           }).then((res) => {
+            setLoad(false)
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } }).then((res) => {
               setProduct([]);
               setProduct(res.data.data);
@@ -81,7 +86,20 @@ const Shop = (props) => {
     }
   }
 
-  return (
+  return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
       <div class="page-heading">
         <div class="breadcrumbs">
@@ -209,7 +227,7 @@ const Shop = (props) => {
                                     <span style={{ fontSize: "30px", color: "green", }}>{x.favourites == null ? <AiOutlineHeart/> : <AiOutlineHeart/>}</span>
                                   </div>
                                   </div>
-                              <div class="item-title"><a href="product-detail.html" style={{textTransform:"capitalize",fontSize:"18px"}}>( {x.category_name} ) </a> </div>
+                              <div class="item-title"><a style={{textTransform:"capitalize",fontSize:"18px"}}>( {x.category_name} ) </a> </div>
                       
                             </div>
                           </div>
@@ -279,14 +297,14 @@ const Shop = (props) => {
         <li>
           <div class="feature-box">
             <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over $99</div>
+            <div class="content">FREE SHIPPING on order over ₹99</div>
           </div>
         </li>
         <li>
           <div class="feature-box">
             <div class="icon-support"></div>
             <div class="content">Have a question?<br/>
-              +1 800 789 0000</div>
+            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
           </div>
         </li>
         <li>

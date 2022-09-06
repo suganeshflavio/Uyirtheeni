@@ -27,6 +27,7 @@ import CategoryShop from '../Components/CategoryShop';
 import AddAddress from '../Profiles/AddAddress';
 import UpdateAddress from '../Profiles/UpdateAddress';
 import UpdateProfile from '../Profiles/UpdateProfile';
+import OrderSummary from '../Orders/OrderSummary';
 
 const MainRoutes = () => {
   return (
@@ -65,6 +66,8 @@ const MainRoutes = () => {
           <Route path={"/addaddress"} element={<AddAddress />} />
           <Route path={"/updateaddress"} element={<UpdateAddress />} />
           <Route path={"/updateprofile"} element={<UpdateProfile />} />
+          <Route path={"/ordersummary"} element={<OrderSummary />} />
+
 
 
 

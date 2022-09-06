@@ -10,6 +10,7 @@ const Checkout = (props) => {
   const history = useNavigate();
   const [address, setAddress] = useState([])
   const [profilelist, setProfilelist] = useState([])
+  const [load, setLoad] = useState(true);
   const [id, setId] = useState(1)
   const [cartlist, setCartlist] = useState([])
   const [state, setState] = useState({
@@ -23,6 +24,7 @@ const Checkout = (props) => {
         .then((res) => {
           axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
             .then((res) => {
+              setLoad(false)
               setCartlist(res.data.data);
               window.location.reload()
               toast.error("Removed from Cart!", { autoClose: 2000 })
@@ -40,6 +42,7 @@ const Checkout = (props) => {
       axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, {
           headers: { "authtoken": `${token}` }
         }).then((res) => {
+          setLoad(false)
         setCartlist(res.data.data)
       }).catch((error) => {
         if (localStorage.tok == null || localStorage.tok == undefined) {
@@ -50,6 +53,7 @@ const Checkout = (props) => {
       axios.post(`${process.env.REACT_APP_API}/customer/sumofproducts`, {}, {
         headers: { "authtoken": `${token}` }
       }).then((res) => {
+        setLoad(false)
         setState({
           total: res.data.data + res.data.data * 0.05,
           subtotal: res.data.data,
@@ -62,6 +66,7 @@ const Checkout = (props) => {
       axios.post(`https://api.uyirtheeni.com/customer/getAddress`, {},
           { headers: { "authtoken": `${token}` } })
           .then((res) => {
+            setLoad(false)
               setAddress(res?.data?.data);
           });
   }, []);
@@ -98,6 +103,7 @@ const Checkout = (props) => {
     axios.post(`${process.env.REACT_APP_API}/customer/checkout`, { address: id }, {
       headers: { "authtoken": `${token}` }
     }).then((res) => {
+      setLoad(false)
       console.log(res);
       const options = {
         key: "rzp_live_h0CS0SnVpA6Kcf",
@@ -153,7 +159,20 @@ const Checkout = (props) => {
   }
 
 
-  return (
+  return load ? (
+    <div
+      style={{
+        height: "400px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  ) : (
     <div>
     <div class="page-heading">
         <div class="container">
@@ -214,14 +233,14 @@ const Checkout = (props) => {
                                 {cartlist.map((x, val) => (
                                     <tr class="first last odd">
                                         <td>{++val}</td>
-                                        <td class="image hidden-table"><a href="product-detail.html" class="product-image">
+                                        <td class="image hidden-table"><a class="product-image">
                                             <img src={x.product.product_image} width="75" alt={x.product.product_name} /></a></td>
                                         <td>
                                             <h2 class="product-name">
-                                                <a href="product-detail.html" style={{textTransform:"capitalize"}}>{x.product.product_name}</a>
+                                                <a style={{textTransform:"capitalize"}}>{x.product.product_name}</a>
                                             </h2>
                                         </td>
-                                        <td class="a-center hidden-table">
+                                        <td class="a-center hidden-table" style={{textTransform:"capitalize"}}>
                                             <a href="#" class="edit" >{x.product.category_name}</a>
                                         </td>
 
@@ -286,10 +305,10 @@ const Checkout = (props) => {
                       {address !== null ? address?.map((x, val) => (
                       <tr class="first odd">
                         <td><input type="checkbox" checked={x.id == id} onChange={(e) => setId(e.target.value)} value={x.id} /></td>
-                        <td><span class="nobr">{x?.state}</span></td>
-                        <td>{x?.city}</td>
-                        <td><span class="price">{x?.street}</span></td>
-                        <td>{x?.landmark}</td>
+                        <td style={{textTransform:"capitalize"}}><span class="nobr">{x?.state}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{x?.city}</td>
+                        <td style={{textTransform:"capitalize"}}><span class="price">{x?.street}</span></td>
+                        <td style={{textTransform:"capitalize"}}>{x?.landmark}</td>
                         <td class="a-center last"><span class="nobr">{x?.zipcode} </span></td>
                         <td>   <span className="badge badge-warning" type="submit" style={{ cursor: "pointer", color: "black",fontSize: "15px", padding: "10px" }} onClick={() => Update(x.id)}><i class='bx bxs-edit-alt' ></i> Update</span> </td>
 
@@ -374,14 +393,14 @@ const Checkout = (props) => {
                             <li>
                                 <div class="feature-box">
                                     <div class="icon-truck"></div>
-                                    <div class="content">FREE SHIPPING on order over $99</div>
+                                    <div class="content">FREE SHIPPING on order over ₹99</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="feature-box">
                                     <div class="icon-support"></div>
                                     <div class="content">Have a question?<br />
-                                        +1 800 789 0000</div>
+                                    <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
                                 </div>
                             </li>
                             <li>
