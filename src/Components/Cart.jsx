@@ -31,13 +31,13 @@ const Cart = () => {
     }
 
     function delcart(x) {
-        axios.post(`${process.env.REACT_APP_API}/customer/removeCart`, { cart_id: x.id, product_id: x.product_id }, { headers: { "authtoken": `${token}` } })
+        axios.post(`${process.env.REACT_APP_API}/customer/removeCart`, { cart_id: x?.id, product_id: x?.product_id }, { headers: { "authtoken": `${token}` } })
             .then((res) => {
                 setLoad(false)
                 axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
                     .then((res) => {
                         setLoad(false)
-                        setCartlist(res.data.data);
+                        setCartlist(res?.data?.data);
                         window.location.reload()
                         toast.error("Removed from Cart!", { autoClose: 2000 })
                     })
@@ -50,7 +50,7 @@ const Cart = () => {
             headers: { "authtoken": `${token}` }
         }).then((res) => {
             setLoad(false)
-            setCartlist(res.data.data)
+            setCartlist(res?.data?.data)
         }).catch((error) => {
             if (localStorage.tok == null || localStorage.tok == undefined) {
                 history.push("/login")
@@ -129,31 +129,31 @@ const Cart = () => {
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            {cartlist.map((x, val) => (
+                                            {cartlist?.map((x, val) => (
                                                 <tr class="first last odd">
                                                     <td>{++val}.</td>
                                                     <td class="image hidden-table"><a class="product-image">
-                                                        <img src={x.product.product_image} width="75" alt={x.product.product_name} /></a></td>
+                                                        <img src={x?.product.product_image} width="75" alt={x?.product?.product_name} /></a></td>
                                                     <td>
                                                         <h2 class="product-name">
-                                                            <a style={{ textTransform: "capitalize" }}>{x.product.product_name}</a>
+                                                            <a style={{ textTransform: "capitalize" }}>{x?.product?.product_name}</a>
                                                         </h2>
                                                     </td>
                                                     <td class="a-center hidden-table">
-                                                        <a href="#" class="edit" style={{ textTransform: "capitalize" }}>{x.product.category_name}</a>
+                                                        <a href="#" class="edit" style={{ textTransform: "capitalize" }}>{x?.product?.category_name}</a>
                                                     </td>
 
 
                                                     <td class="a-right hidden-table">
                                                         <span class="cart-price">
-                                                            <span class="price" style={{ textAlign: "center" }}>₹{x.single_product_price}</span>
+                                                            <span class="price" style={{ textAlign: "center" }}>₹{x?.single_product_price}</span>
                                                         </span>
 
 
                                                     </td>
                                                     <td class="a-center movewishlist" style={{ textAlign: "center" }}>
-                                                        {x.no_of_products}                                                </td>
-                                                    <td style={{ textAlign: "center" }}>₹{x.total_price}</td>
+                                                        {x?.no_of_products}                                                </td>
+                                                    <td style={{ textAlign: "center" }}>₹{x?.total_price}</td>
                                                     <td class="a-center last">
 
                                                         <a onClick={() => delcart(x)} title="Remove item" class="button remove-item">

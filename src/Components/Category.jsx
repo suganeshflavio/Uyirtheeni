@@ -52,7 +52,7 @@ const Category = (props) => {
               <div class="col-xs-12">
                 <ul>
                   <li class="home"> <a href="/" title="Go to Home Page">Home</a> <span>&rsaquo; </span> </li>
-                  <li class="category1601"> <strong>Vegetables</strong> </li>
+                  <li class="category1601"> <strong>Categories</strong> </li>
                 </ul>
               </div>
               {/* <!--col-xs-12-->  */}
@@ -62,7 +62,7 @@ const Category = (props) => {
           {/* <!--container-->  */}
         </div>
         <div class="page-title">
-          <h2>Vegetables</h2>
+          <h2>categories</h2>
         </div>
       </div>
 

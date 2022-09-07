@@ -1,4 +1,9 @@
 import React from "react";
+import { FaPhoneAlt } from 'react-icons/fa';  
+import { GrMail } from 'react-icons/gr';  
+import { MdLocationPin } from 'react-icons/md';  
+
+
 
 const Contact = () => {
   return (
@@ -23,8 +28,63 @@ const Contact = () => {
         </div>
       </div>
 
+      <div class="container">
+        <div class="row our-features-box">
+          
+            
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="feature-box">
+                {/* <div class="icon-truck"></div> */}
+                <GrMail style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/>
+                <div class="content"><a href="mailto:info@uyirtheeni.com"> <br />  info@uyirtheeni.com</a></div>
+              </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="feature-box">
+                {/* <div class="icon-support"></div> */}
+                <FaPhoneAlt style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/>
+                <div class="content">
+                  {/* Have a question? */}
+                  <br />
+                  <a href="tel:+91 90959-59587"> +91 90959 59587</a>
+                </div>
+              </div>
+              </div>
+          
+            
+            <div class="col-lg-4 col-md-4 col-sm-4" style={{paddingRight:"0px"}}>
+              <div class="feature-box">
+                {/* <div class="icon-money"></div>  */}
+                <MdLocationPin style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/>
+                <div class="content">Nalam Agro Foods,
+                    Ichikattuvalasu, Nathakadaiyur,
+                    Kangayam, Tirupur - 638108.</div>
+              </div>
+              </div>
+          
+            {/* <li>
+              <div class="feature-box">
+                <div class="icon-return"></div>
+                <div class="content">30 days return Service</div>
+              </div>
+            </li>
+            <li class="last">
+              <div class="feature-box">
+                {" "}
+                <a href="#">
+                  <i class="fa fa-apple"></i> download
+                </a>{" "}
+                <a href="#">
+                  <i class="fa fa-android"></i> download
+                </a>{" "}
+              </div>
+            </li> */}
+        
+        </div>
+      </div>
+
       {/* <!-- BEGIN Main Container col2-right --> */}
-      <div class="main-container col2-right-layout">
+      <div class="main-container col2-right-layout" style={{marginBottom:"30px"}}>
         <div class="main container">
           <div class="row">
             <div
@@ -33,7 +93,7 @@ const Contact = () => {
             >
               <div id="messages_product_view"></div>
               <form action="#" id="contactForm" method="post">
-                <div class="static-contain">
+                {/* <div class="static-contain">
                   <fieldset class="group-select">
                     <ul>
                       <li id="billing-new-address-form">
@@ -103,7 +163,6 @@ const Contact = () => {
                       <p class="require">
                         <em class="required">* </em>Required Fields
                       </p>
-                      {/* <input type="text" name="hideit" id="hideit" value="" style={{display:"none !important"}}/> */}
                       <div class="buttons-set">
                         <button
                           type="submit"
@@ -117,7 +176,7 @@ const Contact = () => {
                       </div>
                     </ul>
                   </fieldset>
-                </div>
+                </div> */}
               </form>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31326.15575130541!2d77.693463!3d11.055903!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb21fd7e6668e1f9!2sNalam%20Agro%20Foods!5e0!3m2!1sen!2sin!4v1630991819632!5m2!1sen!2sin"
@@ -162,53 +221,15 @@ const Contact = () => {
       </div>
       {/* <!--main-container col2-left-layout-->  */}
 
-      <div class="container">
-        <div class="row our-features-box">
-          <ul>
-            <li>
-              <div class="feature-box">
-                <div class="icon-truck"></div>
-                <div class="content">FREE SHIPPING on order over ₹99</div>
-              </div>
-            </li>
-            <li>
-              <div class="feature-box">
-                <div class="icon-support"></div>
-                <div class="content">
-                  Have a question?
-                  <br />
-                  <a href="tel:+91 90959-59587"> +91 90959 59587</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="feature-box">
-                <div class="icon-money"></div>
-                <div class="content">100% Money Back Guarantee</div>
-              </div>
-            </li>
-            <li>
-              <div class="feature-box">
-                <div class="icon-return"></div>
-                <div class="content">30 days return Service</div>
-              </div>
-            </li>
-            <li class="last">
-              <div class="feature-box">
-                {" "}
-                <a href="#">
-                  <i class="fa fa-apple"></i> download
-                </a>{" "}
-                <a href="#">
-                  <i class="fa fa-android"></i> download
-                </a>{" "}
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      
     </div>
   );
 };
 
 export default Contact;
+
+
+{/* <FaPhoneAlt style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/> 
+    <MdLocationPin style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/>
+    <GrMail style={{fontSize: "26px",marginBottom:"26px",lineHeight:"60px",width:"65px",color:" #80b435"}}/>
+*/}

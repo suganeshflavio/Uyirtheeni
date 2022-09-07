@@ -372,17 +372,17 @@ useEffect(() => {
               <div class="countbox_1 timer-grid"></div>
             </div>
             <ul class="products-grid">
-            {recProducts.map((y) => (
+            {recProducts?.map((y) => (
               <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
                 <div class="item-inner">
                   <div class="item-img">
-                    <div class="item-img-info"><a onClick={() => Updatee(y.id)}  class="product-image"><img src={y.product_image} alt="{y.product_name"/></a>
+                    <div class="item-img-info"><a onClick={() => Updatee(y?.id)}  class="product-image"><img src={y.product_image} alt="{y?.product_name"/></a>
                       <div class="new-label new-top-left">Hot</div>
                     </div>
                   </div>
                   <div class="item-info">
                     <div class="info-inner">
-                      <div class="item-title"><a onClick={() => Updatee(y.id)}  style={{textTransform:"capitalize",cursor:"pointer",fontSize:"18px"}}>{y.product_name} </a> </div>
+                      <div class="item-title"><a onClick={() => Updatee(y?.id)}  style={{textTransform:"capitalize",cursor:"pointer",fontSize:"18px"}}>{y?.product_name} </a> </div>
                       <div class="item-content">
                         <div class="rating">
                           <div class="ratings">

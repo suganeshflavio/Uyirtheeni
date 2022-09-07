@@ -24,17 +24,17 @@ const About = () => {
                             <div class="wrapper_bl" style={{marginTop: "1px"}}>
                                 <div class="form_background">
                                 <div class="ad-info">
-                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Organic & Food for 25 Years a hobbiest for 30.</h3>
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Organic & Food for 25 Years a hobbiest for 30</h3>
                                     </div>
                                     <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>Organic products are grown under a system of agriculture without the use of chemical fertilizers and pesticides with an environmentally and socially responsible approach. Organic foods promote healthier and more sustainable use of natural resources. Modern conventional farming methods include excessive use of chemicals and planting only one crop multiple times.</p>
                                     <br />
                                     <div class="ad-info">
-                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Hobby, a Talent, and now, a Profession.</h3>
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>A Hobby, a Talent, and now, a Profession</h3>
                                     </div>
                                     <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>Organic farms are only certified after they have been operating according to organic principles for three years. However, the use of the word ‘organic’ is not regulated in Australia, so it is important to make sure that products you buy come from certified growers and producers.</p>
                                     <br />
                                     <div class="ad-info">
-                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>Organic food is here Grab It.</h3>
+                                     <h3 style={{textAlign:"center",color:"green",padding:"10px"}}>Organic food is here Grab It</h3>
                                     </div>
                                     <p style={{ fontSize: "18px", textAlign: "justify", lineHeight: "2em" }}>These standards provide an agreed set of procedures to be followed in organic food production. This helps to ensure the integrity and traceability of an organic food product from ‘paddock to plate’. The standards include requirements for production, preparation, transportation, marketing and labelling of organic products in Australia.</p>
                                 </div>

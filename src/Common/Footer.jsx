@@ -63,7 +63,7 @@ const Footer = () => {
               <div class="footer-column">
                 <h4>Information</h4>
                 <ul class="links">
-                  <li><a href="/termsandcondition" title="termsandcondition">Terma&Conditions</a></li>
+                  <li><a href="/termsandcondition" title="termsandcondition">Terms&Conditions</a></li>
                   <li><a href="/privacypolicy" title="privacypolicy">Privacy Policy</a></li>
                   <li><a href="/about" title="About Us">About Us</a></li>
                   <li><a href="/contact" title="Contact Us">Contact Us</a></li>

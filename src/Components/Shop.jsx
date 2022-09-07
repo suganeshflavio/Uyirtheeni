@@ -11,6 +11,7 @@ const Shop = (props) => {
   const [product, setProduct] = useState([])
   const [load, setLoad] = useState(true);
   const history = useNavigate()
+
   useEffect(() => {
     if (localStorage.tok) {
       axios.post(`https://api.uyirtheeni.com/customer/getallProduct`, {},
@@ -26,7 +27,7 @@ const Shop = (props) => {
     else {
       axios.get(`https://api.uyirtheeni.com/customer/getallProducts`).then((res) => {
         setLoad(false)
-        console.log(res.data.data.length)
+        console.log("response",res.data.data.length)
         if (res.data.data.length !== 0)
           setProduct(res.data.data)
         else {
@@ -108,7 +109,7 @@ const Shop = (props) => {
               <div class="col-xs-12">
                 <ul>
                   <li class="home"> <a href="/" title="Go to Home Page">Home</a> <span>&rsaquo; </span> </li>
-                  <li class="category1601"> <strong>Vegetables</strong> </li>
+                  <li class="category1601"> <strong>Products</strong> </li>
                 </ul>
               </div>
               {/* <!--col-xs-12-->  */}
@@ -118,7 +119,7 @@ const Shop = (props) => {
           {/* <!--container-->  */}
         </div>
         <div class="page-title">
-          <h2>Vegetables</h2>
+          <h2>Products</h2>
         </div>
       </div>
 
