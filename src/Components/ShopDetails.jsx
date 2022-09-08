@@ -82,7 +82,7 @@ const ShopDetails = () => {
         setLoad(false)
         setNo_of_products("");
         toast.success(" Added to Cart!", { autoClose: 2000 })
-        // window.location.reload()
+        window.location.reload()
 
       });
     }

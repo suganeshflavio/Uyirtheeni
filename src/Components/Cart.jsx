@@ -36,7 +36,6 @@ const Cart = () => {
                 setLoad(false)
                 axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
                     .then((res) => {
-                        setLoad(false)
                         setCartlist(res?.data?.data);
                         window.location.reload()
                         toast.error("Removed from Cart!", { autoClose: 2000 })
@@ -129,7 +128,7 @@ const Cart = () => {
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            {cartlist?.map((x, val) => (
+                                            {Array.isArray(cartlist) && cartlist?.map((x, val) => (
                                                 <tr class="first last odd">
                                                     <td>{++val}.</td>
                                                     <td class="image hidden-table"><a class="product-image">

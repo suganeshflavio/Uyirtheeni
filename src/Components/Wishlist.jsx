@@ -87,25 +87,25 @@ const Wishlist = () => {
                       </tr>
                     </thead>
                     <tbody>
-                    {wishlist.map((c, i) => (
+                    {wishlist?.map((c, i) => (
 
                       <tr id="item_32" class="first odd">
                         <td>{++i}</td>
-                        <td class="wishlist-cell0 customer-wishlist-item-image"><a class="product-image" title="Slim Fit Casual Shirt"> <img src={c.product.product_image} width="80" height="80" alt={c.product.product_name}/> </a></td>
-                        <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c.product.product_name}</a></h3>
+                        <td class="wishlist-cell0 customer-wishlist-item-image"><a class="product-image" title="Slim Fit Casual Shirt"> <img src={c?.product?.product_image} width="80" height="80" alt={c?.product?.product_name}/> </a></td>
+                        <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c?.product?.product_name}</a></h3>
                           {/* <div class="description std">
                             <div class="inner">Full sleeve with buttoned cuffs, brand embroidery at the left side of the chest. Blue colour self design casual shirt, made with 100% cotton, slim fit, mandarin collar with a full buttoned chest placket, single chest patch pocket, full sleeve with buttoned cuffs, brand embroidery at the left side of the chest.</div>
                           </div>
                           <textarea style={{height: "120px", width: "96%"}} name="description[32]" rows="3" cols="5" onFocus="focusComment(this)" onBlur="focusComment(this)" title="Comment"></textarea> */}
                           </td>
-                          <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c.product.category_name}</a></h3>
+                          <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Slim Fit Casual Shirt">{c?.product?.category_name}</a></h3>
                           {/* <div class="description std">
                             <div class="inner">Full sleeve with buttoned cuffs, brand embroidery at the left side of the chest. Blue colour self design casual shirt, made with 100% cotton, slim fit, mandarin collar with a full buttoned chest placket, single chest patch pocket, full sleeve with buttoned cuffs, brand embroidery at the left side of the chest.</div>
                           </div>
                           <textarea style={{height: "120px", width: "96%"}} name="description[32]" rows="3" cols="5" onFocus="focusComment(this)" onBlur="focusComment(this)" title="Comment"></textarea> */}
                           </td>
                    
-                        <td class="wishlist-cell5 customer-wishlist-item-remove last"><a href="#" onClick={() => delwishlist(c.product_id)} title="Clear Cart" class="remove-item"><span><span></span></span></a></td>
+                        <td class="wishlist-cell5 customer-wishlist-item-remove last"><a href="#" onClick={() => delwishlist(c?.product_id)} title="Clear Cart" class="remove-item"><span><span></span></span></a></td>
                       </tr>
                          ))}             
                     </tbody>

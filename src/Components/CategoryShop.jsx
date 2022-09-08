@@ -19,29 +19,31 @@ const CategoryShop = (props) => {
   const { id } = useParams();
   const [product, setProduct] = useState([])
   useEffect(() => {
-    apiCalls("post", "/customer/getall_Category_Products", { "cat_id": id }).then((res)=>{
-      setLoad(false)
-      console.log(res.data);
-                  setProduct(res.data.data);
-    })
-    .catch((err)=>{
+    // apiCalls("post", "/customer/getall_Category_Products", { "cat_id": id }).then((res)=>{
+    //   setLoad(false)
+    //   console.log(res.data);
+    //               setProduct(res.data.data);
+    // })
+    // .catch((err)=>{
         
-    })
-      // if (localStorage.tok) {
+    // })
+      if (localStorage.tok) {
        
-      //     axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Product`, { "cat_id": id },
-      //         { headers: { "authtoken": `${token}` } }).then((res) => {
-      //             console.log(res.data);
-      //             setProduct(res.data.data);
-      //         });
-      // }
-      // else {
-      //     axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Products`, { "cat_id": id })
-      //         .then((res) => {
-      //             console.log(res.data);
-      //             setProduct(res.data.data);
-      //         });
-      // }
+          axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Product`, { "cat_id": id },
+              { headers: { "authtoken": `${token}` } }).then((res) => {
+                setLoad(false)
+                  console.log(res.data);
+                  setProduct(res.data.data);
+              });
+      }
+      else {
+          axios.post(`${process.env.REACT_APP_API}/customer/getall_Category_Products`, { "cat_id": id })
+              .then((res) => {
+                setLoad(false)
+                  console.log(res.data);
+                  setProduct(res.data.data);
+              });
+      }
   }, []);
   function Update(id) {
       // props.history.push("/Product?id=" + id)
@@ -91,7 +93,7 @@ const CategoryShop = (props) => {
     }
   }
 
-  return load ? (
+  return  load ? (
     <div
       style={{
         height: "400px",

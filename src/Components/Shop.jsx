@@ -60,6 +60,8 @@ const Shop = (props) => {
                 setProduct(res.data.data);
                 console.log("addd");
                 toast.success("Added to Wishlist !", { autoClose: 2000 })
+                // window.location.reload()
+
               })
           })
       } else {
