@@ -55,7 +55,7 @@ const Register = (props) => {
         setErrPass("");
       } else {
         axios
-          .post(`https://api.uyirtheeni.com/customer/add`, data)
+          .post(`http://192.168.0.169:4000/customer/add`, data)
           .then((res) => {
             setData(res.data);
             console.log(res.data);

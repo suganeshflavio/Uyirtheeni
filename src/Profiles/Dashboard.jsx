@@ -11,7 +11,7 @@ const Dashboard = (props) => {
       window.localStorage.removeItem("logged");
       window.localStorage.removeItem("tok");
       localStorage.clear()
-      window.location.href = "/Login"
+      window.location.href = "/login"
   }
   const [address, setAddress] = useState([])
   const [load, setLoad] = useState(true);
@@ -19,18 +19,18 @@ const Dashboard = (props) => {
   const [profilelist, setProfilelist] = useState([])
 
   useEffect(() => {
-    axios.post(`https://api.uyirtheeni.com/customer/fetch`, {}, { headers: { "authtoken": `${token}` } })
+    axios.post(`http://192.168.0.169:4000/customer/fetch`, {}, { headers: { "authtoken": `${token}` } })
         .then((res) => {
           setLoad(false)
             setProfilelist(res?.data?.data);
         }).catch((error) => {
             if (localStorage.tok == null || localStorage.tok == undefined) {
-                props.history.push("/Login")
+                props.history.push("/login")
             }
         })
 }, []);
 useEffect(() => {
-    axios.post(`https://api.uyirtheeni.com/customer/getOrders`, {},
+    axios.post(`http://192.168.0.169:4000/customer/getOrders`, {},
         { headers: { "authtoken": `${token}` } })
         .then((res) => {
           setLoad(false)
@@ -48,7 +48,7 @@ function Update(id) {
     window.location.href="/updateaddress?id=" + id
 }
 useEffect(() => {
-    axios.post(`https://api.uyirtheeni.com/customer/getAddress`, {},
+    axios.post(`http://192.168.0.169:4000/customer/getAddress`, {},
         { headers: { "authtoken": `${token}` } })
         .then((res) => {
           setLoad(false)

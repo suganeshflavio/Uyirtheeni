@@ -10,7 +10,7 @@ const VerifyPassword = (props) => {
     const [err, setErr] = useState("")
     function handleclick(e) {
         e.preventDefault()
-        axios.post(`https://api.uyirtheeni.com/customer/verifyEmailCode`, { email, code }, { headers: { "authtoken": `${token}` } })
+        axios.post(`http://192.168.0.169:4000/customer/verifyEmailCode`, { email, code }, { headers: { "authtoken": `${token}` } })
             .then((res) => {
                 setCode("");
                 if (res.data.data == "Code Invalid") {

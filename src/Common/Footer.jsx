@@ -111,7 +111,7 @@ const Footer = () => {
           </div>
           <div class="col-sm-4 col-xs-12 coppyright"> Copyright © <b><a href='/' style={{color:"#80b435"}}>UyirTheeni</a></b> {year} | All Rights Reserved <br /> Developed by <b><a href='https://nutz.in/' style={{color:"#80b435"}}>Nutz</a></b> </div>
           <div class="col-xs-12 col-sm-4">
-            <div class="payment-accept"> <img src="images/payment-1.png" alt=""/> <img src="images/payment-2.png" alt=""/> <img src="images/payment-3.png" alt=""/> <img src="images/payment-4.png" alt=""/> </div>
+            <div class="payment-accept"> <img src="/images/payment-1.png" alt=""/> <img src="/images/payment-2.png" alt=""/> <img src="/images/payment-3.png" alt=""/> <img src="/images/payment-4.png" alt=""/> </div>
           </div>
         </div>
       </div>

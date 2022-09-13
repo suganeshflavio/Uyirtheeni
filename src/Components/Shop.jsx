@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Link, useLocation, useNavigate, withRouter } from "react-router-dom";
 import { AiOutlineHeart } from 'react-icons/ai';
+import {AiFillHeart} from 'react-icons/ai';
 
 
 const token = (localStorage.getItem('tok'));
@@ -14,7 +15,7 @@ const Shop = (props) => {
 
   useEffect(() => {
     if (localStorage.tok) {
-      axios.post(`https://api.uyirtheeni.com/customer/getallProduct`, {},
+      axios.post(`http://192.168.0.169:4000/customer/getallProduct`, {},
         { headers: { "authtoken": `${token}` } }).then((res) => {
           setLoad(false)
           if (res.data.data.length !== 0)
@@ -25,7 +26,7 @@ const Shop = (props) => {
         });
     }
     else {
-      axios.get(`https://api.uyirtheeni.com/customer/getallProducts`).then((res) => {
+      axios.get(`http://192.168.0.169:4000/customer/getallProducts`).then((res) => {
         setLoad(false)
         console.log("response",res.data.data.length)
         if (res.data.data.length !== 0)
@@ -53,13 +54,15 @@ const Shop = (props) => {
         },
           { headers: { "authtoken": `${token}` } })
           .then((res) => {
+            var response = res.data.data;
+
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } })
               .then((res) => {
                 setLoad(false)
                 setProduct([])
                 setProduct(res.data.data);
                 console.log("addd");
-                toast.success("Added to Wishlist !", { autoClose: 2000 })
+                toast.success(response, { autoClose: 2000 })
                 // window.location.reload()
 
               })
@@ -72,12 +75,13 @@ const Shop = (props) => {
           {
             headers: { "authtoken": `${token}` }
           }).then((res) => {
+            var message = res.data.data;
             setLoad(false)
             axios.post(`${process.env.REACT_APP_API}/customer/getallProduct`, {}, { headers: { "authtoken": `${token}` } }).then((res) => {
               setProduct([]);
               setProduct(res.data.data);
               console.log("removed");
-              toast.error("Removed from Wishlist!", { autoClose: 2000 })
+              toast.error(message, { autoClose: 2000 })
             });
           });
       }
@@ -165,7 +169,8 @@ const Shop = (props) => {
                 <article>
                   <div class="toolbar">
                     <div class="sorter">
-                      <div class="view-mode"> <span title="Grid" class="button button-active button-grid">&nbsp;</span>
+                      <div class="view-mode"> 
+                      {/* <span title="Grid" class="button button-active button-grid">&nbsp;</span> */}
                       {/* <a href="/shoplist" title="List" class="button-list">&nbsp;</a>  */}
                       </div>
                     </div>
@@ -219,15 +224,15 @@ const Shop = (props) => {
                               <a onClick={() => Update(x.id)}  class="product-image"><img src={x.product_image} alt="{x.product_name} " /></a>
 
                             </div>
-                            <div class="add_cart">
+                            {/* <div class="add_cart">
                               <button class="button " type="button" onClick={() => Update(x.id)} ><span>View</span></button>
-                            </div>
+                            </div> */}
                           </div>
                           <div class="item-info">
                             <div class="info-inner">
                               <div class="item-title"><a onClick={() => Update(x.id)} style={{textTransform:"capitalize",fontSize:"18px",cursor:"pointer"}}>{x.product_name} </a> 
                               <div className="pt-3" onClick={() => wishlistme(x)} >
-                                    <span style={{ fontSize: "30px", color: "green", }}>{x.favourites == null ? <AiOutlineHeart/> : <AiOutlineHeart/>}</span>
+                                    <span style={{ fontSize: "30px", color: "green", }}>{x.favourites == null ? <AiOutlineHeart/> : <AiFillHeart/>}</span>
                                   </div>
                                   </div>
                               <div class="item-title"><a style={{textTransform:"capitalize",fontSize:"18px"}}>( {x.category_name} ) </a> </div>
@@ -240,6 +245,7 @@ const Shop = (props) => {
                          )
                         })
                         }
+                        <ToastContainer/>
                     </ul>
                   </div>
                   {/* <div class="toolbar bottom">

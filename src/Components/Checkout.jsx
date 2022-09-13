@@ -63,7 +63,7 @@ const Checkout = (props) => {
     }, [])
 
     useEffect(() => {
-      axios.post(`https://api.uyirtheeni.com/customer/getAddress`, {},
+      axios.post(`http://192.168.0.169:4000/customer/getAddress`, {},
           { headers: { "authtoken": `${token}` } })
           .then((res) => {
             setLoad(false)

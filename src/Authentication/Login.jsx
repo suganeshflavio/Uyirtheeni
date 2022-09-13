@@ -8,7 +8,7 @@ const Login = () => {
     const [err, setErr] = useState("")
     function handleclick(e) {
       e.preventDefault()
-      axios.post(`https://api.uyirtheeni.com/customer/login/emailLogin`, { email, password })
+      axios.post(`http://192.168.0.169:4000/customer/login/emailLogin`, { email, password })
         .then((res) => {
           console.log(res.data)
           setEmail("");

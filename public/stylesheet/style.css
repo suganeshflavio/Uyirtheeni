@@ -3464,6 +3464,8 @@ ul.pdt-list li.item a img.image-hover {
 	transition: all 0.3s ease-out;
 	position: relative;
 	overflow: hidden;
+
+
 }
 .products-grid .item .item-inner .item-img .item-img-info a.product-image {
 	display: block;
@@ -3473,9 +3475,10 @@ ul.pdt-list li.item a img.image-hover {
 	width: 50%;
 }
 .products-grid .item .item-inner .item-img:hover img {
-	-webkit-transform: scale(1.8);
+	/* -webkit-transform: scale(1.8);
 	transform: scale(1.8);
-	-moz-transform: scale(1.8);
+	-moz-transform: scale(1.8); */
+	transform: scale(1.2);
 }
 .products-grid .item .item-inner .item-img img {
 	-webkit-transition-duration: 500ms;
@@ -3601,9 +3604,9 @@ margin: 0 0;
 	display: none;
 }
 .products-grid .item .item-inner .item-info .info-inner .item-title {
-	margin-bottom: 10px;
+	/* margin-bottom: 10px;
 	padding:0px 15px;
-	padding-top: 20px;
+	padding-top: 20px; */
 	font-size: 16px;
 	overflow: hidden;
 	letter-spacing:normal;

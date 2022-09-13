@@ -1,7 +1,7 @@
-import React, {useEffect,useState} from 'react'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -9,59 +9,66 @@ import "swiper/css/scrollbar";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const token = (localStorage.getItem("tok"));
+const token = localStorage.getItem("tok");
 
 const Home = (props) => {
-  const [getCategory, setGetCategory] = useState([])
-  const [recProducts, setRecProducts] = useState([])
-  const [error, setError] = useState([])
+  const [getCategory, setGetCategory] = useState([]);
+  const [recProducts, setRecProducts] = useState([]);
+  const [error, setError] = useState([]);
   const [load, setLoad] = useState(true);
-  const [banner, setBanner] = useState([])
+  const [banner, setBanner] = useState([]);
 
-    // GET BANNERS API CALL
-    useEffect(() => {
-      axios.get(`${process.env.REACT_APP_API}/customer/getBanners`, { headers: { "authtoken": ` ${token}` } }).
-        then((res) => {
-          setLoad(false)
-          setBanner(res.data.data)
-        }).catch((e) => {
-          props.history.push("/Apifails")
-        })
-    }, [])
-  
- // GET CATEGORY API CALL
- useEffect(() => {
-  axios.get(`https://api.uyirtheeni.com/customer/getCategory`).
-    then((res) => {
-      setLoad(false)
-      setGetCategory(res.data.data)
-      console.log(res.data.data)
-      // console.log(res.data.data);
-    }).catch(function (error) {
-      console.log('API CALL FAILS')
-      setError('API CALL FAILS')
-    })
-}, [])
+  // GET BANNERS API CALL
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/customer/getBanners`, {
+        headers: { authtoken: ` ${token}` },
+      })
+      .then((res) => {
+        setLoad(false);
+        setBanner(res.data.data);
+      })
+      .catch((e) => {
+        props.history.push("/Apifails");
+      });
+  }, []);
 
-function Update(id) {
-  window.location.href=`/categoryShop/` + id
-  // props.history.push("/CategoryShop?id=" + id)
-}
-function Updatee(id) {
-  window.location.href=`/shopdetails/`+id
-  // props.history.push("/Product?id=" + id)
+  // GET CATEGORY API CALL
+  useEffect(() => {
+    axios
+      .get(`http://192.168.0.169:4000/customer/getCategory`)
+      .then((res) => {
+        setLoad(false);
+        setGetCategory(res.data.data);
+        console.log(res.data.data);
+        // console.log(res.data.data);
+      })
+      .catch(function (error) {
+        console.log("API CALL FAILS");
+        setError("API CALL FAILS");
+      });
+  }, []);
 
-}
-useEffect(() => {
-  axios.post(`https://api.uyirtheeni.com/customer/recommendedProduct`, { "recommended": true })
-    .then((res) => {
-      setLoad(false)
-      setRecProducts(res.data.data);
-    });
-}, [])
+  function Update(id) {
+    window.location.href = `/categoryShop/` + id;
+    // props.history.push("/CategoryShop?id=" + id)
+  }
+  function Updatee(id) {
+    window.location.href = `/shopdetails/` + id;
+    // props.history.push("/Product?id=" + id)
+  }
+  useEffect(() => {
+    axios
+      .post(`http://192.168.0.169:4000/customer/recommendedProduct`, {
+        recommended: true,
+      })
+      .then((res) => {
+        setLoad(false);
+        setRecProducts(res.data.data);
+      });
+  }, []);
 
-
-   return load ? (
+  return load ? (
     <div
       style={{
         height: "400px",
@@ -76,8 +83,8 @@ useEffect(() => {
     </div>
   ) : (
     <div>
-  <div class="content">
-    {/* <div id="thmg-slider-slideshow" class="thmg-slider-slideshow">
+      <div class="content">
+        {/* <div id="thmg-slider-slideshow" class="thmg-slider-slideshow">
       <div class="container">
         <div id='thm_slider_wrapper' class='thm_slider_wrapper fullwidthbanner-container' >
           <div id='thm-rev-slider' class='rev_slider fullwidthabanner'>
@@ -104,42 +111,43 @@ useEffect(() => {
       </div>
     </div> */}
 
-    {/* carousel */}
-    <div class="slider-area">
-
-                <Swiper style={{ display: 'flex', justifyContent: "center", flexWrap: "wrap-reverse" }}
-                    spaceBetween={30}
-                    centeredSlides={true}
-
-                    autoplay={{
-                        delay: 4500,
-                        disableOnInteraction: false,
+        {/* carousel */}
+        <div class="slider-area">
+          <Swiper
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap-reverse",
+            }}
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 4500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+              backgroundColor: "white",
+            }}
+            // navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {banner.map((x) => (
+              <SwiperSlide>
+                {/* slide{i} */}
+                <a href="#">
+                  <div
+                    class="intro-section slider-content-center bg-img single-animation-wrap slider-bg-color-1"
+                    style={{
+                      aspectRatio: "16/9",
+                      backgroundImage: `url(${x.banner_image})`,
                     }}
-                    pagination={{
-                        clickable: true,
-                        backgroundColor: 'white'
-                    }}
-                    // navigation={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
-                >
-                           {banner.map((x) => (
-
-
-                            <SwiperSlide>
-                                {/* slide{i} */}
-                                <a href="#">
-                                    <div
-                                        class="intro-section slider-content-center bg-img single-animation-wrap slider-bg-color-1"
-                                        style={{
-                                            aspectRatio: "16/9",
-                                            backgroundImage: `url(${x.banner_image})`,
-                                        }}
-                                    >
-                                        <div class="container">
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-6 col-md-6">
-                                                    {/* <div class="slider-content-1 slider-animated-1" id="carosel">
+                  >
+                    <div class="container">
+                      <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                          {/* <div class="slider-content-1 slider-animated-1" id="carosel">
                                                         <h1 class="animated" style={{ color: "white" }}>Optimize Your Health</h1>
                                                         <h3 id='offer' style={{ fontSize: "25px" }}>Flat 15% OFF</h3>
                                                         <h1 class="animated" style={{ background: "rgb(242 242 242 / 60%)", paddingLeft: "20px" }}>
@@ -149,32 +157,26 @@ useEffect(() => {
                                                                 Shop Now <i className="fas fa-long-arrow-alt-right "></i></a>
                                                         </div>
                                                     </div> */}
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="hero-slider-img-1 slider-animated-1">
-                                                        <img
-                                                            class="animated animated-slider-img-1"
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                          <div class="hero-slider-img-1 slider-animated-1">
+                            <img
+                              class="animated animated-slider-img-1"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-                                                            alt=""
-                                                        />
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </SwiperSlide>
-
-
-))}
-                    
-                </Swiper>
-            </div>
-    
-    {/* <!--Category slider Start--> */}
-    {/* <div class="top-cate">
+        {/* <!--Category slider Start--> */}
+        {/* <div class="top-cate">
       <div class="featured-pro container">
         <div class="row">
           <div class="slider-items-products">
@@ -243,77 +245,70 @@ useEffect(() => {
       </div>
     </div> */}
 
-    {/* category */}
-    <div class="best-pro slider-items-products container">
-        <div class="new_title">
-          <h2>All Categories</h2>
+        {/* category */}
+        <div class="best-pro slider-items-products container">
+          <div class="new_title">
+            <h2>All Categories</h2>
+          </div>
         </div>
-        </div>
-    <div class="row">
+       <div className="container">
+       <div class="row">
           <div class="hot-deal">
             <div class="box-timer">
               <div class="countbox_1 timer-grid"></div>
             </div>
-            <ul class="products-grid">
-            {getCategory.map((x) => {
-            return (
 
-              <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"><a onClick={() => Update(x.id)}  class="product-image"><img src={x.category_image} alt="{x.category_name}"/></a>
-                      {/* <div class="new-label new-top-left">Hot</div>
-                      <div class="item-box-hover">
-                        <div class="box-inner">
-                          <div class="product-detail-bnt"><a href="#" class="button detail-bnt"><span>Quick View</span></a></div>
-                          <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+            <ul class="products-grid">
+              {getCategory.map((x) => {
+                return (
+                  <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="item-inner">
+                      <div class="item-img">
+                        <div class="item-img-info">
+                          <a onClick={() => Update(x.id)} class="product-image">
+                            <img
+                              src={x.category_image}
+                              alt="{x.category_name}"
+                            />
+                          </a>
                         </div>
-                      </div> */}
-                    </div>
-                    {/* <div class="add_cart">
-                      <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                    </div> */}
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><a onClick={() => Update(x.id)}  style={{textTransform:"capitalize",cursor:"pointer",fontSize:"18px"}}>{x.category_name}</a> </div>
-                      {/* <div class="item-content">
-                        <div class="rating">
-                          <div class="ratings">
-                            <div class="rating-box">
-                              <div class="rating" style={{width:"80%"}}></div>
-                            </div>
-                            <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                      </div>
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title" style={{paddingTop:"20px"}}>
+                            <a
+                              onClick={() => Update(x.id)}
+                              style={{
+                                textTransform: "capitalize",
+                                cursor: "pointer",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {x.category_name}
+                            </a>{" "}
                           </div>
                         </div>
-                        <div class="item-price">
-                          <div class="price-box"><span class="regular-price"><span class="price">$125.00</span> </span> </div>
-                        </div>
-                      </div> */}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-              )
-            })
-            }
-            <ToastContainer Transition="zoom" />
+                  </li>
+                );
+              })}
+              <ToastContainer Transition="zoom" />
             </ul>
           </div>
+          {/* </div> */}
         </div>
-    
-    <div id="top">
-      <div class="container">
-        <div class="row">
-          {/* <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <a href="#" data-scroll-goto="1"> <img src="images/banner-img1.jpg" alt="promotion-banner1"/> </a> </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <a href="#" data-scroll-goto="2"> <img src="images/banner-img2.jpg" alt="promotion-banner2"/> </a> </div> */}
-        </div>
-      </div>
-    </div>
-    
-    {/* best seller */}
+       </div>
 
-    {/* <section class=" wow bounceInUp animated">
+        <div id="top">
+          <div class="container">
+            <div class="row"></div>
+          </div>
+        </div>
+
+        {/* best seller */}
+
+        {/* <section class=" wow bounceInUp animated">
       <div class="best-pro slider-items-products container">
         <div class="new_title">
           <h2>Best Seller</h2>
@@ -322,9 +317,9 @@ useEffect(() => {
       </div>
     </section> */}
 
-{/* best seller products */}
+        {/* best seller products */}
 
-{/* <div class="row">
+        {/* <div class="row">
           <div class="hot-deal">
             <div class="box-timer">
               <div class="countbox_1 timer-grid"></div>
@@ -356,50 +351,69 @@ useEffect(() => {
           </div>
         </div> */}
 
-    {/* hot deals */}
-    <div class="hot-section" style={{marginBottom:"60px"}}>
-      <div class="container">
-        <div class="row">
-          <div class="ad-info">
-            <h2>Hurry Up!</h2>
-            <h3>Deal of the week</h3>
-            <h4>From our family farm right to your doorstep.</h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="hot-deal">
-            <div class="box-timer">
-              <div class="countbox_1 timer-grid"></div>
+        {/* hot deals */}
+        <div class="hot-section" style={{ marginBottom: "60px" }}>
+          <div class="container">
+            <div class="row">
+              <div class="ad-info">
+                <h2>Hurry Up!</h2>
+                <h3>Deal of the week</h3>
+                <h4>From our family farm right to your doorstep.</h4>
+              </div>
             </div>
-            <ul class="products-grid">
-            {recProducts?.map((y) => (
-              <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"><a onClick={() => Updatee(y?.id)}  class="product-image"><img src={y.product_image} alt="{y?.product_name"/></a>
-                      <div class="new-label new-top-left">Hot</div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><a onClick={() => Updatee(y?.id)}  style={{textTransform:"capitalize",cursor:"pointer",fontSize:"18px"}}>{y?.product_name} </a> </div>
-                      <div class="item-content">
-                        <div class="rating">
-                          <div class="ratings">
+            <div class="row">
+              <div class="hot-deal">
+                <div class="box-timer">
+                  <div class="countbox_1 timer-grid"></div>
+                </div>
+                <ul class="products-grid">
+                  {recProducts?.map((y) => (
+                    <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="item-inner">
+                        <div class="item-img">
+                          <div class="item-img-info">
+                            <a
+                              onClick={() => Updatee(y?.id)}
+                              class="product-image"
+                            >
+                              <img
+                                src={y.product_image}
+                                alt="{y?.product_name"
+                              />
+                            </a>
+                            {/* <div class="new-label new-top-left">Hot</div> */}
+                          </div>
+                        </div>
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title" style={{paddingTop:"20px"}}>
+                              <a
+                                onClick={() => Updatee(y?.id)}
+                                style={{
+                                  textTransform: "capitalize",
+                                  cursor: "pointer",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {y?.product_name}{" "}
+                              </a>{" "}
+                            </div>
+                            <div class="item-content">
+                              <div class="rating">
+                                <div class="ratings"></div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-             ))}
-            </ul>
-          </div>
-        </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-        {/* testimoniali */}
-        {/* <div class="row">
+            {/* testimoniali */}
+            {/* <div class="row">
           <div class="testimonials-section slider-items-products">
             <div  id="testimonials" class="offer-slider parallax parallax-2">
               <div class="slider-items slider-width-col6">
@@ -422,8 +436,8 @@ useEffect(() => {
             </div>
           </div>
         </div> */}
-        {/* logos */}
-        {/* <div class="row">
+            {/* logos */}
+            {/* <div class="row">
           <div class="logo-brand">
             <div class="slider-items-products">
               <div id="brand-slider" class="product-flexslider hidden-buttons">
@@ -470,14 +484,12 @@ useEffect(() => {
             </div>
           </div>
         </div> */}
-      </div>
-    </div>
-    
-   
-{/* segment shop */}
+          </div>
+        </div>
 
+        {/* segment shop */}
 
-    {/* <div class="latest-blog wow bounceInUp animated animated container"> 
+        {/* <div class="latest-blog wow bounceInUp animated animated container"> 
       
       <div>
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 blog-post">
@@ -518,46 +530,55 @@ useEffect(() => {
         </div>
       </div>
     </div> */}
-    
-  </div>
+      </div>
 
-  <div class="container">
-    <div class="row our-features-box">
-      <ul>
-        <li>
-          <div class="feature-box">
-            <div class="icon-truck"></div>
-            <div class="content">FREE SHIPPING on order over ₹99</div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-support"></div>
-            <div class="content">Have a question?<br/>
-            <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-money"></div>
-            <div class="content">100% Money Back Guarantee</div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-return"></div>
-            <div class="content">30 days return Service</div>
-          </div>
-        </li>
-        <li class="last">
-          <div class="feature-box"> <a href="#"><i class="fa fa-apple"></i> download</a> <a href="#"><i class="fa fa-android"></i> download</a> </div>
-        </li>
-      </ul>
+      <div class="container">
+        <div class="row our-features-box">
+          <ul>
+            <li>
+              <div class="feature-box">
+                <div class="icon-truck"></div>
+                <div class="content">FREE SHIPPING on order over ₹99</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-support"></div>
+                <div class="content">
+                  Have a question?
+                  <br />
+                  <a href="tel:+91 90959-59587"> +91 90959 59587</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-money"></div>
+                <div class="content">100% Money Back Guarantee</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-return"></div>
+                <div class="content">30 days return Service</div>
+              </div>
+            </li>
+            <li class="last">
+              <div class="feature-box">
+                {" "}
+                <a href="#">
+                  <i class="fa fa-apple"></i> download
+                </a>{" "}
+                <a href="#">
+                  <i class="fa fa-android"></i> download
+                </a>{" "}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Home
+export default Home;

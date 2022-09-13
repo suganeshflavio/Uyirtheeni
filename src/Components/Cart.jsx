@@ -31,13 +31,12 @@ const Cart = () => {
     }
 
     function delcart(x) {
-        axios.post(`${process.env.REACT_APP_API}/customer/removeCart`, { cart_id: x?.id, product_id: x?.product_id }, { headers: { "authtoken": `${token}` } })
+        axios.post(`${process.env.REACT_APP_API}/customer/removeCart`, { cart_id: x.id, product_id: x.product_id }, { headers: { "authtoken": `${token}` } })
             .then((res) => {
-                setLoad(false)
                 axios.post(`${process.env.REACT_APP_API}/customer/getCart`, {}, { headers: { "authtoken": `${token}` } })
                     .then((res) => {
-                        setCartlist(res?.data?.data);
-                        window.location.reload()
+                        setCartlist(res.data.data);
+                        // window.location.reload()
                         toast.error("Removed from Cart!", { autoClose: 2000 })
                     })
             })
@@ -59,18 +58,18 @@ const Cart = () => {
 
     return load ? (
         <div
-          style={{
-            height: "400px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+            style={{
+                height: "400px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
         >
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
-      ) : (
+    ) : (
         <div>
             <div class="page-heading">
                 <div class="container">
@@ -155,8 +154,11 @@ const Cart = () => {
                                                     <td style={{ textAlign: "center" }}>₹{x?.total_price}</td>
                                                     <td class="a-center last">
 
-                                                        <a onClick={() => delcart(x)} title="Remove item" class="button remove-item">
-                                                            <span><span>Remove item</span></span></a>
+                                                        <span style={{ textAlign: "center", fontSize: "15px", padding: "10px", backgroundColor: "red" }}
+                                                            class="close-btn close-danger remove-from-cart"
+                                                            onClick={() => delcart(x)} class="badge badge-danger">
+                                                            <span style={{ cursor: "pointer" }}><i class='bx bx-trash'></i> Remove</span>
+                                                        </span>
                                                     </td>
 
 

@@ -8,7 +8,7 @@ const token = (localStorage.getItem("tok"));
 const AddAddress = (props) => {
         const history = useNavigate()
     const [state, setState] = useState("")
-    const [load, setLoad] = useState(true);
+    // const [load, setLoad] = useState(true);
     const [city, setCity] = useState("")
     const [street, setStreet] = useState("")
     const [landmark, setLandmark] = useState("")
@@ -28,7 +28,7 @@ const AddAddress = (props) => {
             axios
                 .post(`${process.env.REACT_APP_API}/customer/addAddress`, data, { headers: { "authtoken": `${token}` } })
                 .then((res) => {
-                    setLoad(false)
+                    // setLoad(false)
                     setData(res.data);
                     setState("");
                     setCity("")
@@ -43,20 +43,7 @@ const AddAddress = (props) => {
         }
     }
 
-  return load ? (
-    <div
-      style={{
-        height: "400px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-  ) : (
+  return (
     <div>
           <div class="page-heading">
                 <div class="container">

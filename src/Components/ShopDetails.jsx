@@ -79,10 +79,11 @@ const ShopDetails = () => {
         "variant_id": variant_id,
         "no_of_products": count,
       }, { headers: { "authtoken": `${token}` } }).then((res) => {
+        var msg = res.data.data;
         setLoad(false)
         setNo_of_products("");
-        toast.success(" Added to Cart!", { autoClose: 2000 })
-        window.location.reload()
+        toast.success(msg, { autoClose: 2000 })
+        // window.location.reload()
 
       });
     }
@@ -148,7 +149,7 @@ const ShopDetails = () => {
               <div class="col-xs-12">
                 <ul>
                   <li class="home"> <a href="/" title="Go to Home Page">Home</a> <span>&rsaquo; </span> </li>
-                  <li class="category1601"> <strong>Shop</strong> </li>
+                  <li class="category1601"> <strong>Shop Details</strong> </li>
                 </ul>
               </div>
               {/* <!--col-xs-12-->  */}
@@ -272,25 +273,23 @@ const ShopDetails = () => {
                                             </div> */}
 
                       <ul class="shipping-pro" style={{ listStyle: "none" }}>
-                        <li >
+                        <li style={{fontWeight: "bold", fontSize:"18px"}}>
                           <span style={{ fontWeight: "bold" }}> Category:</span>  &nbsp;<span style={{ textTransform: "capitalize" }}>{sproduct?.category_name} </span>
 
                         </li>
-                        <li>
-                          <span style={{ fontWeight: "bold" }}> SKU:</span> &nbsp;<span>{sproduct?.sku}</span>
+                        <li style={{marginTop:"10px",marginBottom:"10px",fontWeight: "bold",fontSize:"18px"}}>
+                          <span style={{ fontWeight: "bold" }}> SKU:</span> &nbsp;<span style={{ textTransform: "capitalize" }}>{sproduct?.sku}</span>
                         </li>
-                        <li>
+                        <li style={{fontWeight:"bold",fontSize:"18px"}}>
                           <div style={{ display: "flex" }}>
 
-                            <span style={{ fontWeight: "bold" }}>Quantity: </span>
-                            <div className="pt-3 pb-3" >
-                              {Object?.keys(product_varient)?.map((varient, index) => (
-                                <span className="active" onClick={() => changevariant(varient)}>
-                                  <span class="badge bg-success active" style={{ padding: "8px", backgroundColor: "green", marginLeft: "10px",cursor:"pointer" }}> {product_varient[varient]?.quantity}</span>
-
-
-                                </span>
-                              ))}
+                            <span style={{ fontWeight: "bold",marginTop:"10px" }}>Quantity: </span> &nbsp;
+                            <div className="pt-3 pb-3" style={{marginTop:"10px"}}>
+                            {Object.keys(product_varient).map((varient, index) => (
+                      <span className="active" onClick={() => changevariant(varient)}
+                        style={{ border: "1px solid green", cursor: "pointer", backgroundColor: variant_id === product_varient[varient].id ? "green" : "", color: variant_id === product_varient[varient].id ? "white" : "", borderRadius: "10px", padding: "10px", margin: "4px" }}>
+                        {product_varient[varient].quantity}</span>
+                    ))}
                             </div>
                           </div>
                         </li>
@@ -301,6 +300,7 @@ const ShopDetails = () => {
                   </form>
                 </div>
               </div>
+              <ToastContainer />
               {/* <!--product-essential--> */}
               <div class="product-collateral container">
                 {/* <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
@@ -357,22 +357,60 @@ const ShopDetails = () => {
 
 
                 {/* <!--product-collateral--> */}
-                <div class="box-additional">
-                  {/* <!-- BEGIN RELATED PRODUCTS --> */}
-                  <div class="related-pro container">
-                    <div class="slider-items-products">
-                      <div class="new_title center" style={{ textAlign: "center" }}>
-                        <h2>Related Products</h2>
+                <div class="best-pro slider-items-products container">
+          <div class="new_title">
+            <h2>Related Product</h2>
+          </div>
+        </div>
+        <div className="container">
+       <div class="row">
+          <div class="hot-deal">
+            <div class="box-timer">
+              <div class="countbox_1 timer-grid"></div>
+            </div>
+
+            <ul class="products-grid">
+            {recProducts?.map((y) => (
+                  <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="item-inner">
+                      <div class="item-img">
+                        <div class="item-img-info">
+                          <a onClick={() => Updatee(y?.id)} class="product-image">
+                            <img
+                              src={y?.product_image}
+                              alt="y?.product_name}"
+                            />
+                          </a>
+                        </div>
                       </div>
-
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title" style={{paddingTop:"20px"}}>
+                            <a
+                              onClick={() => Updatee(y?.id)}
+                              style={{
+                                textTransform: "capitalize",
+                                cursor: "pointer",
+                                fontSize: "18px",
+                              }}
+                            >
+                             {y?.product_name}
+                            </a>{" "}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  {/* <!-- end related product --> */}
+                  </li>
+              ))}
+              <ToastContainer Transition="zoom" />
+            </ul>
+          </div>
+          {/* </div> */}
+        </div>
+       </div>
 
-                </div>
 
-
-                <div class="row">
+                {/* <div class="row">
                   <div class="hot-deal">
                     <div class="box-timer">
                       <div class="countbox_1 timer-grid"></div>
@@ -386,33 +424,16 @@ const ShopDetails = () => {
                               <div class="item-img-info">
                                 <a onClick={() => Updatee(y?.id)} class="product-image">
                                   <img src={y?.product_image} alt={y?.product_name} /></a>
-                                {/* <div class="new-label new-top-left"></div>
-                      <div class="item-box-hover">
-                        <div class="box-inner">
-                          <div class="product-detail-bnt"><a href="#" class="button detail-bnt"><span>Quick View</span></a></div>
-                          <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist button detail-bnt" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                        </div>
-                      </div> */}
+                               
                               </div>
-                              <div class="add_cart">
-                                <button class="button" type="button"><span onClick={() => Updatee(y?.id)}>View</span></button>
-
-                              </div>
+                            
                             </div>
                             <div class="item-info">
                               <div class="info-inner">
                                 <div class="item-title"><a onClick={() => Updatee(y?.id)} style={{ textTranform: "capitalize" }}>{y?.product_name} </a> </div>
                                 <div class="item-content">
-                                  {/* <div class="rating">
-                          <div class="ratings">
-                            <div class="rating-box">
-                              <div class="rating" style={{width:"80%"}}></div>
-                            </div>
-                            <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                          </div>
-                        </div> */}
+                              
                                   <div class="item-price">
-                                    {/* <div class="price-box"><span class="regular-price"><span class="price">$125.00</span> </span> </div> */}
                                   </div>
                                 </div>
                               </div>
@@ -422,7 +443,7 @@ const ShopDetails = () => {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </div> */}
                 {/* <!-- end related product --> */}
               </div>
               {/* <!--box-additional--> */}

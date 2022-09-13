@@ -398,7 +398,7 @@ footer address {
 .col-xs-12.right_menu {
 	padding-left: 4px;
 }
-.product-img-box. col-xs-12 {
+.product-img-box .col-xs-12 {
 width:300px;
 }
 .product-next-prev {
@@ -1053,7 +1053,7 @@ footer address span {
 	width: 70px !important;
 }
 .product-view .product-shop .add-to-box .btn-cart {
-	margin-top:05px;
+	margin-top:20px;
 }
 
 .product-view .product-shop .add-to-box .custom {margin-top:5px}

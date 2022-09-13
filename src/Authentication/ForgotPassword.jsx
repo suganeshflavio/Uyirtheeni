@@ -10,7 +10,7 @@ const ForgotPassword = (props) => {
     
     const handlesubmit = (e) => {
         e.preventDefault()
-        axios.post(`https://api.uyirtheeni.com/customer/sendEmailCode`, { email }, { headers: { "authtoken": `${token}` } }).
+        axios.post(`http://192.168.0.169:4000/customer/sendEmailCode`, { email }, { headers: { "authtoken": `${token}` } }).
             then((res) => {
                 setEmail(res.data);
                 setData(res.data);

@@ -13,7 +13,7 @@ const Category = (props) => {
 
 
   useEffect(() => {
-    axios.get(`https://api.uyirtheeni.com/customer/getCategory`).then((res) => {
+    axios.get(`http://192.168.0.169:4000/customer/getCategory`).then((res) => {
       setLoad(false)
       setGetCategory(res.data.data)
       console.log(res.data.data)
@@ -68,62 +68,58 @@ const Category = (props) => {
 
       {/* category */}
       <div class="best-pro slider-items-products container">
-        <div class="new_title">
-          <h2>All Categories</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="hot-deal">
-          <div class="box-timer">
-            <div class="countbox_1 timer-grid"></div>
+          <div class="new_title">
+            <h2>All Categories</h2>
           </div>
-          <ul class="products-grid">
-            {getCategory.map((x) => {
-              return (
+        </div>
+       <div className="container">
+       <div class="row">
+          <div class="hot-deal">
+            <div class="box-timer">
+              <div class="countbox_1 timer-grid"></div>
+            </div>
 
-                <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                  <div class="item-inner">
-                    <div class="item-img">
-                      <div class="item-img-info"><a onClick={() => Update(x.id)} class="product-image"><img src={x.category_image} alt="{x.category_name}" /></a>
-                        {/* <div class="new-label new-top-left">Hot</div>
-                      <div class="item-box-hover">
-                        <div class="box-inner">
-                          <div class="product-detail-bnt"><a href="#" class="button detail-bnt"><span>Quick View</span></a></div>
-                          <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+            <ul class="products-grid">
+              {getCategory.map((x) => {
+                return (
+                  <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="item-inner">
+                      <div class="item-img">
+                        <div class="item-img-info">
+                          <a onClick={() => Update(x.id)} class="product-image">
+                            <img
+                              src={x.category_image}
+                              alt="{x.category_name}"
+                            />
+                          </a>
                         </div>
-                      </div> */}
                       </div>
-                      {/* <div class="add_cart">
-                      <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                    </div> */}
-                    </div>
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title"><a onClick={() => Update(x.id)} style={{ textTransform: "capitalize", cursor: "pointer", fontSize: "18px" }}>{x.category_name} </a> </div>
-                        {/* <div class="item-content">
-                        <div class="rating">
-                          <div class="ratings">
-                            <div class="rating-box">
-                              <div class="rating" style={{width:"80%"}}></div>
-                            </div>
-                            <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title" style={{paddingTop:"20px"}}>
+                            <a
+                              onClick={() => Update(x.id)}
+                              style={{
+                                textTransform: "capitalize",
+                                cursor: "pointer",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {x.category_name}
+                            </a>{" "}
                           </div>
                         </div>
-                        <div class="item-price">
-                          <div class="price-box"><span class="regular-price"><span class="price">$125.00</span> </span> </div>
-                        </div>
-                      </div> */}
                       </div>
                     </div>
-                  </div>
-                </li>
-              )
-            })
-            }
-            <ToastContainer Transition="zoom" />
-          </ul>
+                  </li>
+                );
+              })}
+              <ToastContainer Transition="zoom" />
+            </ul>
+          </div>
+          {/* </div> */}
         </div>
-      </div>
+       </div>
     </div>
   )
 }
