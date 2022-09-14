@@ -129,6 +129,52 @@ const Login = () => {
                 {/* <!--main-container--> */}
 
             </div>
+
+            <div class="container">
+        <div class="row our-features-box">
+          <ul>
+            <li>
+              <div class="feature-box">
+                <div class="icon-truck"></div>
+                <div class="content">We supply only organic food farm</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-support"></div>
+                <div class="content">
+                  Have a question?
+                  <br />
+                  <a href="tel:+91 90959-59587"> +91 90959 59587</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-money"></div>
+                <div class="content">no return & refund policy available</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-return"></div>
+                <div class="content">Entice yourself with delicious sweets!</div>
+              </div>
+            </li>
+            <li class="last">
+              <div class="feature-box">
+                {" "}
+                <a href="#">
+                  <i class="fa fa-apple"></i> download
+                </a>{" "}
+                <a href="#">
+                  <i class="fa fa-android"></i> download
+                </a>{" "}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
         </div>
     )
 }

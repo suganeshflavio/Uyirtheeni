@@ -538,7 +538,7 @@ const Home = (props) => {
             <li>
               <div class="feature-box">
                 <div class="icon-truck"></div>
-                <div class="content">FREE SHIPPING on order over ₹99</div>
+                <div class="content">We supply only organic food farm</div>
               </div>
             </li>
             <li>
@@ -554,13 +554,13 @@ const Home = (props) => {
             <li>
               <div class="feature-box">
                 <div class="icon-money"></div>
-                <div class="content">100% Money Back Guarantee</div>
+                <div class="content">no return & refund policy available</div>
               </div>
             </li>
             <li>
               <div class="feature-box">
                 <div class="icon-return"></div>
-                <div class="content">30 days return Service</div>
+                <div class="content">Entice yourself with delicious sweets!</div>
               </div>
             </li>
             <li class="last">

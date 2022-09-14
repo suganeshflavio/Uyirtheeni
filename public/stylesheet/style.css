@@ -11183,11 +11183,11 @@ address {
 	background: #cb2027;
 }
 .social .linkedin a:before {
-	content: "\f0e1";
+	content: "\f16d";
 	font-family: FontAwesome;
 }
 .social .linkedin a {
-	content: "\f0e1";
+	content: "\f16d";
 	font-family: FontAwesome;
 	background: #027ba5;
 	font-size: 18px;

@@ -63,7 +63,7 @@ const Footer = () => {
               <div class="footer-column">
                 <h4>Information</h4>
                 <ul class="links">
-                  <li><a href="/termsandcondition" title="termsandcondition">Terms&Conditions</a></li>
+                  <li><a href="/termsandcondition" title="termsandcondition">Terms & Conditions</a></li>
                   <li><a href="/privacypolicy" title="privacypolicy">Privacy Policy</a></li>
                   <li><a href="/about" title="About Us">About Us</a></li>
                   <li><a href="/contact" title="Contact Us">Contact Us</a></li>
@@ -111,7 +111,9 @@ const Footer = () => {
           </div>
           <div class="col-sm-4 col-xs-12 coppyright"> Copyright © <b><a href='/' style={{color:"#80b435"}}>UyirTheeni</a></b> {year} | All Rights Reserved <br /> Developed by <b><a href='https://nutz.in/' style={{color:"#80b435"}}>Nutz</a></b> </div>
           <div class="col-xs-12 col-sm-4">
-            <div class="payment-accept"> <img src="/images/payment-1.png" alt=""/> <img src="/images/payment-2.png" alt=""/> <img src="/images/payment-3.png" alt=""/> <img src="/images/payment-4.png" alt=""/> </div>
+            <div class="payment-accept"> <img src="/images/payment-5.png" alt=""/>
+             <img src="/images/payment-2.png" alt=""/> <img src="/images/payment-6.png" alt=""/> <img src="/images/payment-4.png" alt=""/> 
+             </div>
           </div>
         </div>
       </div>

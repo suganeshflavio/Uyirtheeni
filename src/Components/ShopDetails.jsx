@@ -250,7 +250,7 @@ const ShopDetails = () => {
 
                       </div>
                       <div class="short-description">
-                        <p style={{ textAlign: "justify" }}>{sproduct?.product_description}</p>
+                        <p style={{ textAlign: "justify",fontSize:"15px",color:"#292929" }}>{sproduct?.product_description}</p>
                       </div>
                       <div class="email-addto-box">
                         <ul class="add-to-links">

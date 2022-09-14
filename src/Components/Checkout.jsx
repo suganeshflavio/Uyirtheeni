@@ -230,31 +230,31 @@ const Checkout = (props) => {
                                     </tr>
                                 </tfoot> */}
                                 <tbody>
-                                {cartlist.map((x, val) => (
+                                {cartlist?.map((x, val) => (
                                     <tr class="first last odd">
                                         <td>{++val}</td>
                                         <td class="image hidden-table"><a class="product-image">
-                                            <img src={x.product.product_image} width="75" alt={x.product.product_name} /></a></td>
+                                            <img src={x.product.product_image} width="75" alt={x?.product.product_name} /></a></td>
                                         <td>
                                             <h2 class="product-name">
-                                                <a style={{textTransform:"capitalize"}}>{x.product.product_name}</a>
+                                                <a style={{textTransform:"capitalize"}}>{x?.product.product_name}</a>
                                             </h2>
                                         </td>
                                         <td class="a-center hidden-table" style={{textTransform:"capitalize"}}>
-                                            <a href="#" class="edit" >{x.product.category_name}</a>
+                                            <a href="#" class="edit" >{x?.product.category_name}</a>
                                         </td>
 
 
                                         <td class="a-right hidden-table">
                                             <span class="cart-price">
-                                                <span class="price">₹{x.single_product_price}</span>
+                                                <span class="price">₹{x?.single_product_price}</span>
                                             </span>
 
 
                                         </td>
                                         <td class="a-center movewishlist">
                                         {x.no_of_products} </td>
-                                        <td>₹{x.total_price}</td>
+                                        <td>₹{x?.total_price}</td>
                                         <td class="a-center last">
 
                                             <a onClick={() => delcart(x)} title="Remove item" class="button remove-item">
@@ -388,39 +388,50 @@ const Checkout = (props) => {
                 {/* <!--col1-layout--> */}
 
                 <div class="container">
-                    <div class="row our-features-box">
-                        <ul>
-                            <li>
-                                <div class="feature-box">
-                                    <div class="icon-truck"></div>
-                                    <div class="content">FREE SHIPPING on order over ₹99</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-box">
-                                    <div class="icon-support"></div>
-                                    <div class="content">Have a question?<br />
-                                    <a href="tel:+91 90959-59587"> +91 90959 59587</a></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-box">
-                                    <div class="icon-money"></div>
-                                    <div class="content">100% Money Back Guarantee</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-box">
-                                    <div class="icon-return"></div>
-                                    <div class="content">30 days return Service</div>
-                                </div>
-                            </li>
-                            <li class="last">
-                                <div class="feature-box"> <a href="#"><i class="fa fa-apple"></i> download</a> <a href="#"><i class="fa fa-android"></i> download</a> </div>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="row our-features-box">
+          <ul>
+            <li>
+              <div class="feature-box">
+                <div class="icon-truck"></div>
+                <div class="content">We supply only organic food farm</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-support"></div>
+                <div class="content">
+                  Have a question?
+                  <br />
+                  <a href="tel:+91 90959-59587"> +91 90959 59587</a>
                 </div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-money"></div>
+                <div class="content">no return & refund policy available</div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-box">
+                <div class="icon-return"></div>
+                <div class="content">Entice yourself with delicious sweets!</div>
+              </div>
+            </li>
+            <li class="last">
+              <div class="feature-box">
+                {" "}
+                <a href="#">
+                  <i class="fa fa-apple"></i> download
+                </a>{" "}
+                <a href="#">
+                  <i class="fa fa-android"></i> download
+                </a>{" "}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
                 {/* <!-- For version 1,2,3,4,6 --> */}
 
             </div>

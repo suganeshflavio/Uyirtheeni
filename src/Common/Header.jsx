@@ -26,9 +26,9 @@ var flag=0;
 function mytoggel(){ 
   if(flag==0){ 
     document.getElementById('mobile-menu').style.display = "flex";
-    document.getElementById('mobile-menu').style.width = window.screen.width/2+"px";
-    document.getElementById('mobile-menu').style.height = window.screen.height+"px";
-    document.querySelector('.mm-toggle').style.marginLeft = window.screen.width/2+"15px";
+    document.getElementById('mobile-menu').style.width ="200px";
+    // document.getElementById('mobile-menu').style.height = window.screen.height+"px";
+    document.querySelector('.mm-toggle').style.marginLeft = "215px";
     document.getElementById('mobile-menu').classList.add("mobile-menu");
     flag++;
   }else{
@@ -62,7 +62,7 @@ function mytoggel(){
       </div>
     </div>
     <div id="header">
-      <div class="container">
+      <div class="consticky-header sticky-header-bartainer">
         <div class="header-container row">
           <div class="logo"> <a href="/" title="index" >
             <div><img src="/images/logo.png" alt="logo" width="50px"/></div>
